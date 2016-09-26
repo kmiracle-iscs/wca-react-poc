@@ -1,0 +1,2 @@
+export const REQUEST_CUSTOMER = "REQUEST_CUSTOMER";
+export const REQUEST_LOGIN = "REQUEST_LOGIN";
