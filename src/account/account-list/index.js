@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { AccountItemComponent } from '../account-item'
+import { AccountItem } from '../account-item'
 
-export class AccountListComponent extends React.Component {
+export class AccountList extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -12,14 +12,14 @@ export class AccountListComponent extends React.Component {
             <div>
                 <h1>Accounts</h1>
                 {this.props.accounts.map(account => {
-                    return <AccountItemComponent key={account.id} account={account} />
+                    return <AccountItem key={account.id} account={account} />
                 })}
             </div>
         )
     }
 }
 
-AccountListComponent.propTypes = {
+AccountList.propTypes = {
     accounts: React.PropTypes.array.isRequired
 };
 
@@ -30,4 +30,4 @@ function mapStateToProps(state) {
     }
 }
 
-AccountListComponent = connect(mapStateToProps)(AccountListComponent);
+AccountList = connect(mapStateToProps)(AccountList);

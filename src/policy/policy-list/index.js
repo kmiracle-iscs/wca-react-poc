@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-export class PolicyListComponent extends React.Component {
+export class PolicyList extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -20,7 +20,7 @@ export class PolicyListComponent extends React.Component {
     }
 }
 
-PolicyListComponent.propTypes = {
+PolicyList.propTypes = {
     policies: React.PropTypes.array.isRequired
 };
 
@@ -31,4 +31,4 @@ function mapStateToProps(state) {
     }
 }
 
-PolicyListComponent = connect(mapStateToProps)(PolicyListComponent);
+PolicyList = connect(mapStateToProps)(PolicyList);

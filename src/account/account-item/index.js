@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class AccountItemComponent extends React.Component {
+export class AccountItem extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -15,6 +15,6 @@ export class AccountItemComponent extends React.Component {
     }
 }
 
-AccountItemComponent.propTypes = {
+AccountItem.propTypes = {
     account: React.PropTypes.object.isRequired
 };

@@ -1,19 +1,46 @@
 import { App } from './app'
-import { LoginComponent } from './auth/login'
-import { PolicyListComponent } from './policy/policy-list'
-import { AccountListComponent } from './account/account-list'
-import { DashboardComponent } from './app/components/dashboard-component'
-//import { NoMatch } from './app/NoMatch'
+import { Login} from './auth/login'
+import { Dashboard } from './app/components/dashboard-component'
 
+
+function loggedIn() {
+    return true;
+}
+
+function requireAuth(nextState, replace) {
+    if (!loggedIn()) {
+        replace({
+            pathname: '/login',
+            state: { nextPathname: nextState.location.pathname }
+        });
+    }
+}
 
 export const routes = {
     path: '/',
     component: App,
+    indexRoute: {
+        component: Dashboard,
+        onEnter: requireAuth
+    },
     childRoutes: [
-        { path: 'dashboard', component: DashboardComponent },
-        { path: 'login', component: LoginComponent },
-        { path: 'policies', component: PolicyListComponent },
-        { path: 'accounts', component: AccountListComponent }
-        //{ path: '*', component: NoMatch }
+        {
+            path: 'dashboard',
+            component: Dashboard,
+            onEnter: requireAuth
+        },
+        {
+            path: 'login',
+            component: Login
+        },
+        {
+            path: 'logout',
+            onEnter: (nextState, replace) => {
+                console.log("*** logout");
+                replace({
+                    pathname: '/login'
+                });
+            }
+        }
     ]
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class PolicyItemComponent extends React.Component {
+export class PolicyItem extends React.Component {
     constructor(props) {
         super(props);
     }
