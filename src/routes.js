@@ -36,7 +36,6 @@ export const routes = {
         {
             path: 'logout',
             onEnter: (nextState, replace) => {
-                console.log("*** logout");
                 replace({
                     pathname: '/login'
                 });

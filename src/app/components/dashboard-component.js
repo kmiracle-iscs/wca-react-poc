@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import { Nav} from './nav-component';
+import { NavComponent } from './nav-component';
 
 export class Dashboard extends React.Component {
     constructor(props) {

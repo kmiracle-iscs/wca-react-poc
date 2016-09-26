@@ -1,8 +1,8 @@
-import { REQUEST_CUSTOMER } from './constants';
+import { CUSTOMER_REQUEST } from './constants';
 
 export function requestCustomer(customerNumber) {
     return {
-        type: REQUEST_CUSTOMER,
+        type: CUSTOMER_REQUEST,
         customerNumber
     }
 }

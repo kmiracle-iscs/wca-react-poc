@@ -1,11 +1,12 @@
-import { createStore } from 'redux';
+import thunkMiddleware from 'redux-thunk'
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers'
 
 const initialState = {
     activeCustomer: "312",
     auth: {
         isLoggedIn: false,
-        token: ""
+        bearerToken: undefined
     },
     policies: [
         {
@@ -40,7 +41,8 @@ const initialState = {
 export default function configureStore(preloadedState = initialState) {
     return createStore(
         rootReducer,
-        preloadedState
+        preloadedState,
+        applyMiddleware(thunkMiddleware),
     )
 }
 

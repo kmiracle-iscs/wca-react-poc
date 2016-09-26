@@ -2,12 +2,18 @@ import React from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 
-import { requestLogin } from './actions';
+
+import { login } from './actions';
 
 export class Login extends React.Component {
     constructor(props) {
         super(props);
         this.handleLoginClick = this.handleLoginClick.bind(this);
+
+        this.state = {
+            username: '',
+            password: ''
+        }
     }
 
     render() {
@@ -15,18 +21,33 @@ export class Login extends React.Component {
             <div>
                 <form>
                     <h2>Login</h2>
-                    <input type="text" className="form-control" />
-                    <input type="password" className="form-control" />
+                    <input type="text" name="username" className="form-control" value={this.state.username} onChange={this.handleChange.bind(this)} />
+                    <input type="password" name="password" className="form-control" value={this.state.password} onChange={this.handleChange.bind(this)} />
                     <button type="button" className="btn btn-primary" onClick={this.handleLoginClick}>Login</button>
                 </form>
             </div>
         )
     }
 
+    handleChange(e) {
+        let nextState = {};
+        nextState[e.target.name] = e.target.value;
+        this.setState(nextState);
+    }
+
     handleLoginClick(e) {
         e.preventDefault();
-        console.log("****** logging in");
-        this.props.dispatch(requestLogin({username: "kyle", password: "password"}));
+        this.props.login(this.state);
+    }
+}
+
+Login.propTypes = {
+    login: React.PropTypes.func.isRequired
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        login: (user) => {dispatch(login(user))}
     }
 }
 
@@ -34,4 +55,4 @@ function mapStateToProps(state) {
     return state.auth;
 }
 
-Login = connect(mapStateToProps)(Login);
+Login = connect(mapStateToProps, mapDispatchToProps)(Login);
