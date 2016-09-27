@@ -1,4 +1,5 @@
-import { CUSTOMER_REQUEST, LOGIN_REQUEST, LOGIN_RESPONSE, LOGIN_FAILURE } from './constants';
+import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGIN_FAILURE } from './constants';
+import { LOGOUT_REQUEST } from './constants';
 import { POLICIES_REQUEST, POLICIES_RESPONSE, POLICIES_FAILURE } from './constants';
 import { ACCOUNTS_REQUEST, ACCOUNTS_RESPONSE, ACCOUNTS_FAILURE } from './constants';
 
@@ -8,9 +9,6 @@ import reduceAccounts from './account/reducers';
 
 export default function customers(state = {}, action) {
     switch (action.type) {
-        case CUSTOMER_REQUEST:
-            return Object.assign({}, state, {activeCustomer: action.customerNumber});
-
         case LOGIN_REQUEST:
             return Object.assign({}, state, {
                 'auth': reduceAuth(state['auth'], action)
@@ -22,6 +20,11 @@ export default function customers(state = {}, action) {
             });
 
         case LOGIN_FAILURE:
+            return Object.assign({}, state, {
+                'auth': reduceAuth(state['auth'], action)
+            });
+
+        case LOGOUT_REQUEST:
             return Object.assign({}, state, {
                 'auth': reduceAuth(state['auth'], action)
             });

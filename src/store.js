@@ -5,8 +5,8 @@ import rootReducer from './reducers'
 const initialState = {
     auth: {
         isLoggedIn: false,
-        bearerToken: undefined,
-        activeCustomerId: undefined
+        bearerToken: null,
+        activeCustomerId: null
     },
     policies: [],
     accounts: []

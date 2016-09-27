@@ -52,7 +52,7 @@ export class Timeline extends React.Component {
 
     render() {
         return (
-            <div className="m-t-2">
+            <div>
                 <TimelineHeader />
                 <h4>Recent Activity</h4>
                 <table className="table">

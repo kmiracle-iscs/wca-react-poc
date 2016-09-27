@@ -1,12 +1,8 @@
 import { App } from './app'
 import { Login} from './auth/login'
 import { Dashboard } from './app/components/dashboard-component'
-import { store } from './app';
+import { loggedIn, logout } from './auth/auth-service';
 
-
-function loggedIn() {
-    return store.getState().auth.isLoggedIn;
-}
 
 function requireAuth(nextState, replace) {
     if (!loggedIn()) {
@@ -37,6 +33,9 @@ export const routes = {
         {
             path: 'logout',
             onEnter: (nextState, replace) => {
+                // dispatch logout
+                logout();
+
                 replace({
                     pathname: '/login'
                 });
