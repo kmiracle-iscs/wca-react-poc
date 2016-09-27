@@ -9,7 +9,8 @@ const initialState = {
         activeCustomerId: null
     },
     policies: [],
-    accounts: []
+    accounts: [],
+    events: []
 };
 
 export default function configureStore(preloadedState = initialState) {
