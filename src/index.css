@@ -1,3 +1,9 @@
+body {
+    background: #f1f1f1;
+}
+a {
+    color: #231f20;
+}
 .blueBg {
     background-color: blue;
     color: white;
@@ -7,4 +13,26 @@
 }
 .noMargin {
     margin: 0;
+}
+.panel {
+    background: #fff;
+    padding: 20px 30px 20px;
+}
+.sideNav {
+    background: #fff;
+    padding: 15px 15px 0;
+}
+.sideNav ul {
+    padding: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+.sideNav li {
+    padding-bottom: 20px;
+}
+.bgInverse {
+    background-color: #2658a5!important;
+}
+.container {
+    max-width: 1400px;
 }

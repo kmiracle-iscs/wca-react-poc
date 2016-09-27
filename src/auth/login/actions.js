@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
-import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGIN_FAILURE } from '../../constants';
+import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGIN_FAILURE, LOGOUT_REQUEST } from '../../constants';
 
 export function loginRequest() {
     return {
@@ -16,9 +16,15 @@ export function loginResponse(user) {
     }
 }
 
-export function loginFailure(user) {
+export function loginFailure() {
     return {
         type: LOGIN_FAILURE
+    }
+}
+
+export function logoutRequest() {
+    return {
+        type: LOGOUT_REQUEST
     }
 }
 

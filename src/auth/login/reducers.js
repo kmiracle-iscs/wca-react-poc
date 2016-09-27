@@ -1,9 +1,9 @@
-import { LOGIN_REQUEST, LOGIN_RESPONSE } from '../../constants';
+import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT_REQUEST } from '../../constants';
 
 export default function reduceAuth(state = {
     isLoggedIn: false,
-    bearerToken: undefined,
-    activeCustomerId: undefined
+    bearerToken: null,
+    activeCustomerId: null
 }, action) {
     switch (action.type) {
         case LOGIN_REQUEST:
@@ -14,6 +14,13 @@ export default function reduceAuth(state = {
                 isLoggedIn: true,
                 bearerToken: action.user.bearerToken,
                 activeCustomerId: action.user.customerId
+            });
+
+        case LOGOUT_REQUEST:
+            return Object.assign({}, state, {
+                isLoggedIn: false,
+                bearerToken: null,
+                activeCustomerId: null
             });
 
         default:
