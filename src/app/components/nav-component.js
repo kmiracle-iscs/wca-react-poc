@@ -8,11 +8,22 @@ export class Nav extends React.Component {
 
     render() {
         return (
-            <nav className="navbar navbar-light bg-faded">
-                <div className="nav navbar-nav">
-                    <Link to={`/dashboard`} className="nav-item nav-link active">Dashboard</Link>
-                    <Link to={`/logout`} className="nav-item nav-link active">Logout</Link>
-                </div>
+            <nav className="navbar navbar-fixed-top navbar-dark bg-inverse">
+                <a className="navbar-brand">Innovative Insurance Co.</a>
+                <ul className="nav navbar-nav pull-xs-right">
+                    <li className="nav-item">
+                        <Link to={`/dashboard`} className="nav-item nav-link active">Home</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to={`/support`} className="nav-item nav-link active">Support</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to={`/profile`} className="nav-item nav-link active">Profile</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to={`/logout`} className="nav-item nav-link active">Logout</Link>
+                    </li>
+                </ul>
             </nav>
         )
     }

@@ -14,8 +14,8 @@ export class PolicyList extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3>Policies</h3>
+            <div className="m-t-3">
+                <h4>Policies</h4>
                 <table className="table">
                     <tbody>
                         {this.props.policies.map(policy => {

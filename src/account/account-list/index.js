@@ -15,14 +15,22 @@ export class AccountList extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3>Accounts</h3>
+            <div className="m-t-3">
+                <h4>Accounts</h4>
                 <table className="table">
                     <tbody>
+                        <tr>
+                            <th>Account Number</th>
+                            <th>Due Date</th>
+                            <th>Balance</th>
+                            <th>Due</th>
+                        </tr>
                     {this.props.accounts.map(account => {
                         return (<tr key={account.id}>
-                            <td>{account.id}</td>
                             <td>{account.accountNumber}</td>
+                            <td>{account.dueDt}</td>
+                            <td>{account.accountBalanceAmt}</td>
+                            <td>{account.currentDueAmt}</td>
                         </tr>)
                     })}
                     </tbody>

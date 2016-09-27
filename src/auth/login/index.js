@@ -21,9 +21,9 @@ export class Login extends React.Component {
             <div>
                 <form>
                     <h2>Login</h2>
-                    <input type="text" name="username" className="form-control" value={this.state.username} onChange={this.handleChange.bind(this)} />
-                    <input type="password" name="password" className="form-control" value={this.state.password} onChange={this.handleChange.bind(this)} />
-                    <button type="button" className="btn btn-primary" onClick={this.handleLoginClick}>Login</button>
+                    <input type="text" name="username" className="form-control m-t-2" value={this.state.username} onChange={this.handleChange.bind(this)} />
+                    <input type="password" name="password" className="form-control m-t-1" value={this.state.password} onChange={this.handleChange.bind(this)} />
+                    <button type="button" className="btn btn-primary m-t-1" onClick={this.handleLoginClick}>Login</button>
                 </form>
             </div>
         )

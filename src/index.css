@@ -1,4 +1,10 @@
 .blueBg {
-	background-color: blue;
-	color: white;
+    background-color: blue;
+    color: white;
+}
+.noPadding {
+    padding: 0;
+}
+.noMargin {
+    margin: 0;
 }
