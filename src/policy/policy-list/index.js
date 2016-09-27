@@ -16,11 +16,16 @@ export class PolicyList extends React.Component {
         return (
             <div>
                 <h3>Policies</h3>
-                <ul>
-                    {this.props.policies.map(policy => {
-                        return <li key={policy.id}>{policy.policyNumber}</li>
-                    })}
-                </ul>
+                <table className="table">
+                    <tbody>
+                        {this.props.policies.map(policy => {
+                            return (<tr key={policy.id}>
+                                <td>{policy.id}</td>
+                                <td>{policy.policyNumber}</td>
+                            </tr>)
+                        })}
+                    </tbody>
+                </table>
             </div>
         )
     }

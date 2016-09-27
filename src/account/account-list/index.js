@@ -17,11 +17,16 @@ export class AccountList extends React.Component {
         return (
             <div>
                 <h3>Accounts</h3>
-                <ul>
-                {this.props.accounts.map(account => {
-                    return <li key={account.id}>{account.accountNumber}</li>
-                })}
-                </ul>
+                <table className="table">
+                    <tbody>
+                    {this.props.accounts.map(account => {
+                        return (<tr key={account.id}>
+                            <td>{account.id}</td>
+                            <td>{account.accountNumber}</td>
+                        </tr>)
+                    })}
+                    </tbody>
+                </table>
             </div>
         )
     }
