@@ -1,6 +1,6 @@
 import 'babel-polyfill';
 import { browserHistory } from 'react-router';
-import fetch from 'isomorphic-fetch';
+import axios from 'axios';
 import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGIN_FAILURE } from '../../constants';
 
 export function loginRequest() {
@@ -26,23 +26,20 @@ export function login(user) {
     return function (dispatch) {
         dispatch(loginRequest());
 
-        const config = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-ISCS-API-KEY': '5damt3xpd589e84ftg8bxx9n',
-                'ISCS_API_KEY': '5damt3xpd589e84ftg8bxx9n'
-            },
-            body: JSON.stringify(user)
-        };
-
-        return fetch(`https://api.iscs.io/api/v2/iic-ceg/login`, config)
+        const url = 'https://api.iscs.io/api/v2/iic-ceg/login',
+              data = JSON.stringify(user),
+              config = {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-ISCS-API-KEY': '5damt3xpd589e84ftg8bxx9n',
+                        'ISCS_API_KEY': '5damt3xpd589e84ftg8bxx9n'
+                    }
+              };
+              
+        return axios.post(url, data, config)
             .then(response => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                return response.json()
+                return response.data;
             })
             .then(json => {
                 dispatch(loginResponse(json));

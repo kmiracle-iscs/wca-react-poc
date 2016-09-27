@@ -6,6 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || "8888";
+const WEBPACK_DEVTOOL = 'source-map'; //process.env.WEBPACK_DEVTOOL || 'cheap-module-source-map';
 
 // global css
 loaders.push({
@@ -30,7 +31,7 @@ module.exports = {
         `webpack/hot/only-dev-server`,
         `./src/index.js` // Your appʼs entry point
     ],
-    devtool: process.env.WEBPACK_DEVTOOL || 'cheap-module-source-map',
+    devtool: WEBPACK_DEVTOOL,
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
