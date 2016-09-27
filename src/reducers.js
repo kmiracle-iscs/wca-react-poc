@@ -13,37 +13,37 @@ export default function customers(state = {}, action) {
 
         case LOGIN_REQUEST:
             return Object.assign({}, state, {
-                "auth": reduceAuth(state["auth"], action)
+                'auth': reduceAuth(state['auth'], action)
             });
 
         case LOGIN_RESPONSE:
             return Object.assign({}, state, {
-                "auth": reduceAuth(state["auth"], action)
+                'auth': reduceAuth(state['auth'], action)
             });
 
         case LOGIN_FAILURE:
             return Object.assign({}, state, {
-                "auth": reduceAuth(state["auth"], action)
+                'auth': reduceAuth(state['auth'], action)
             });
 
         case POLICIES_REQUEST:
             return Object.assign({}, state, {
-                "policies": reducePolicies(state['policies'], action)
+                'policies': reducePolicies(state['policies'], action)
             });
 
         case POLICIES_RESPONSE:
             return Object.assign({}, state, {
-                "policies": reducePolicies(state['policies'], action)
+                'policies': reducePolicies(state['policies'], action)
             });
 
         case ACCOUNTS_REQUEST:
             return Object.assign({}, state, {
-                "accounts": reduceAccounts(state['accounts'], action)
+                'accounts': reduceAccounts(state['accounts'], action)
             });
 
         case ACCOUNTS_RESPONSE:
             return Object.assign({}, state, {
-                "accounts": reduceAccounts(state['accounts'], action)
+                'accounts': reduceAccounts(state['accounts'], action)
             });
 
         default:

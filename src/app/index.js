@@ -15,7 +15,7 @@ export class App extends React.Component {
     }
 
     componentDidMount() {
-        store.dispatch(requestCustomer("315"));
+        store.dispatch(requestCustomer('315'));
     }
 
     componentWillReceiveProps(nextProps) {
