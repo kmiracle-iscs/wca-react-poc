@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+import axios from 'axios';
 import { store } from '../app';
 
 export default class AccountService {
@@ -7,23 +7,20 @@ export default class AccountService {
 
     getAccounts() {
         const { bearerToken } = store.getState().auth;
-        const config = {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-ISCS-API-KEY': '5damt3xpd589e84ftg8bxx9n',
-                'ISCS_API_KEY': '5damt3xpd589e84ftg8bxx9n',
-                'bearerToken': bearerToken
-            }
+        const url = 'https://api.iscs.io/api/v2/iic-ceg/customers/315/accounts',
+              config = {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-ISCS-API-KEY': '5damt3xpd589e84ftg8bxx9n',
+                    'ISCS_API_KEY': '5damt3xpd589e84ftg8bxx9n',
+                    'bearerToken': bearerToken
+                }
         };
 
-        return fetch(`https://api.iscs.io/api/v2/iic-ceg/customers/315/accounts`, config)
+        return axios.get(url, config)
             .then(response => {
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                return response.json();
+                return response.data;
             });
     }
 

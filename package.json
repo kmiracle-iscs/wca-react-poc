@@ -16,9 +16,9 @@
   "license": "MIT",
   "homepage": "https://github.com/alicoding/react-webpack-babel#readme",
   "dependencies": {
+    "axios": "^0.14.0",
     "babel-polyfill": "^6.3.14",
     "bootstrap": "^4.0.0-alpha.3",
-    "isomorphic-fetch": "^2.1.1",
     "react": "15.3.0",
     "react-dom": "15.3.0",
     "react-redux": "^4.4.5",
