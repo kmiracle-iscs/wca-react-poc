@@ -1,33 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { AccountItem } from '../account-item'
+import { getAccounts } from '../actions';
+
 
 export class AccountList extends React.Component {
     constructor(props) {
         super(props);
     }
 
+    componentWillMount() {
+        this.props.getAccounts();
+    }
+
     render() {
         return (
             <div>
-                <h1>Accounts</h1>
+                <h3>Accounts</h3>
+                <ul>
                 {this.props.accounts.map(account => {
-                    return <AccountItem key={account.id} account={account} />
+                    return <li key={account.id}>{account.accountNumber}</li>
                 })}
+                </ul>
             </div>
         )
     }
 }
 
 AccountList.propTypes = {
-    accounts: React.PropTypes.array.isRequired
+    accounts: React.PropTypes.array.isRequired,
+    getAccounts: React.PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
-    const { accounts } = state;
+function mapDispatchToProps(dispatch) {
     return {
-        accounts
+        getAccounts: () => {dispatch(getAccounts())}
     }
 }
 
-AccountList = connect(mapStateToProps)(AccountList);
+function mapStateToProps(state) {
+    return { accounts: state.accounts };
+}
+
+AccountList = connect(mapStateToProps, mapDispatchToProps)(AccountList);

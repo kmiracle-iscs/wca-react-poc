@@ -9,7 +9,6 @@ export class AccountItem extends React.Component {
         return (
             <div>
                 <label>Account {this.props.account.accountNumber}</label>
-
             </div>
         )
     }
