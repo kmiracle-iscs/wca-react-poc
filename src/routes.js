@@ -1,10 +1,11 @@
 import { App } from './app'
 import { Login} from './auth/login'
 import { Dashboard } from './app/components/dashboard-component'
+import { store } from './app';
 
 
 function loggedIn() {
-    return true;
+    return store.getState().auth.isLoggedIn;
 }
 
 function requireAuth(nextState, replace) {

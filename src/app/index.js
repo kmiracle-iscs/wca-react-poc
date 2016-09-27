@@ -33,15 +33,13 @@ export class App extends React.Component {
 }
 
 App.propTypes = {
-    activeCustomer: React.PropTypes.string.isRequired,
     auth: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
-    const { activeCustomer, auth } = state;
+    const { auth } = state;
     return {
-        activeCustomer,
         auth
     }
 }

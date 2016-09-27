@@ -1,5 +1,4 @@
 import 'babel-polyfill';
-import fetch from 'isomorphic-fetch';
 import { POLICIES_REQUEST, POLICIES_RESPONSE, POLICIES_FAILURE } from '../constants';
 import PolicyService from './policy-service';
 
@@ -22,7 +21,7 @@ export function policiesFailure() {
     }
 }
 
-export function getPolicies(user) {
+export function getPolicies() {
     return function (dispatch) {
         dispatch(policiesRequest());
 

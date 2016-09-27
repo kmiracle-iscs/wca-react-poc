@@ -15,12 +15,12 @@ export class PolicyList extends React.Component {
     render() {
         return (
             <div>
-                    <h3>Policies</h3>
-                    <ul>
-                        {this.props.policies.map(policy => {
-                            return <li key={policy.id}>{policy.policyNumber}</li>
-                        })}
-                    </ul>
+                <h3>Policies</h3>
+                <ul>
+                    {this.props.policies.map(policy => {
+                        return <li key={policy.id}>{policy.policyNumber}</li>
+                    })}
+                </ul>
             </div>
         )
     }
