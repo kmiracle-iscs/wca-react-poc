@@ -1,7 +1,8 @@
 import React from 'react';
 
 
-import { NavComponent } from './nav-component';
+import { Nav } from './nav-component';
+import { PolicyList } from '../../policy/policy-list';
 
 export class Dashboard extends React.Component {
     constructor(props) {
@@ -14,8 +15,9 @@ export class Dashboard extends React.Component {
                 <Nav />
                 <div className="row m-t-3">
                     <div className="col col-lg-12">
-                        <h2>Dashboard</h2>
+                        <PolicyList />
                     </div>
+
                 </div>
 
             </div>

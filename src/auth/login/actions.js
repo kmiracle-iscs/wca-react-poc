@@ -1,5 +1,7 @@
+import 'babel-polyfill';
+import { browserHistory } from 'react-router';
 import fetch from 'isomorphic-fetch';
-import { LOGIN_REQUEST, LOGIN_RESPONSE } from '../../constants';
+import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGIN_FAILURE } from '../../constants';
 
 export function loginRequest() {
     return {
@@ -14,11 +16,17 @@ export function loginResponse(user) {
     }
 }
 
+export function loginFailure(user) {
+    return {
+        type: LOGIN_FAILURE
+    }
+}
+
 export function login(user) {
     return function (dispatch) {
         dispatch(loginRequest());
 
-        return fetch(`https://api.iscs.io/api/v2/iic-ceg/login`, {
+        const config = {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -27,8 +35,21 @@ export function login(user) {
                 'ISCS_API_KEY': '5damt3xpd589e84ftg8bxx9n'
             },
             body: JSON.stringify(user)
-        })
-            .then(response => response.json())
-            .then(json => dispatch(loginResponse(json)));
+        };
+
+        return fetch(`https://api.iscs.io/api/v2/iic-ceg/login`, config)
+            .then(response => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json()
+            })
+            .then(json => {
+                dispatch(loginResponse(json));
+                browserHistory.push('/dashboard');
+            })
+            .catch(error => {
+                dispatch(loginFailure())
+            });
     }
 }

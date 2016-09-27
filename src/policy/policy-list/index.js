@@ -1,34 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
+import { getPolicies } from '../actions';
+
 export class PolicyList extends React.Component {
     constructor(props) {
         super(props);
     }
 
+    componentWillMount() {
+        this.props.getPolicies();
+    }
+
     render() {
         return (
             <div>
-                <h1>Policies</h1>
-                <ul>
-                    {this.props.policies.map(policy => {
-                        return <li key={policy.id}>{policy.policyNumber}</li>
-                    })}
-                </ul>
+                    <h3>Policies</h3>
+                    <ul>
+                        {this.props.policies.map(policy => {
+                            return <li key={policy.id}>{policy.policyNumber}</li>
+                        })}
+                    </ul>
             </div>
         )
     }
 }
 
 PolicyList.propTypes = {
-    policies: React.PropTypes.array.isRequired
+    policies: React.PropTypes.array.isRequired,
+    getPolicies: React.PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
-    const { policies } = state;
+function mapDispatchToProps(dispatch) {
     return {
-        policies
+        getPolicies: () => {dispatch(getPolicies())}
     }
 }
 
-PolicyList = connect(mapStateToProps)(PolicyList);
+function mapStateToProps(state) {
+    return { policies: state.policies };
+}
+
+PolicyList = connect(mapStateToProps, mapDispatchToProps)(PolicyList);
