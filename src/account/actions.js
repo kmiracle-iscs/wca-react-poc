@@ -2,6 +2,7 @@ import 'babel-polyfill';
 import { ACCOUNTS_REQUEST, ACCOUNTS_RESPONSE, ACCOUNTS_FAILURE } from '../constants';
 import AccountService from './account-service';
 
+
 export function accountsRequest() {
     return {
         type: ACCOUNTS_REQUEST

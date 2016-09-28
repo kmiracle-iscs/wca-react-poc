@@ -8,3 +8,11 @@ export function loggedIn() {
 export function logout() {
     store.dispatch(logoutRequest());
 }
+
+export function getActiveCustomerId() {
+    return store.getState().auth.activeCustomerId;
+}
+
+export function getBearerToken() {
+    return store.getState().auth.bearerToken;
+}

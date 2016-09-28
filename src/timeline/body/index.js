@@ -24,10 +24,12 @@ export class Timeline extends React.Component {
                     {this.props.events.map(event => {
                         return (<tr key={event.id}>
                             <td>{event.type}</td>
-                            <td>{event.policyNumber}</td>
+                            <td><a href="">{event.policyNumber}</a></td>
                             <td>{event.date}</td>
                             <td>{event.detail}</td>
-                            <td>{event.action}</td>
+                            <td className={event.status==='success' ? 'text-success' : 'text-danger'}>
+                                {event.action}
+                            </td>
                         </tr>)
                     })}
                     </tbody>

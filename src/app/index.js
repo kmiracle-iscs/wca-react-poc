@@ -1,9 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../index.css';
 import { connect } from 'react-redux';
 import React from 'react';
 
-// App
+
 import configureStore from '../store';
 import { SideNav } from './components/side-nav';
 import { loggedIn } from '../auth/auth-service';
@@ -14,9 +13,6 @@ export class App extends React.Component {
     constructor(props) {
         super(props);
         this.dispatch = props.dispatch;
-    }
-
-    componentWillReceiveProps(nextProps) {
     }
 
     render() {
