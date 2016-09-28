@@ -7,7 +7,8 @@ const events = [
         policyNumber: 'CAA000008',
         date: moment().format('ll'),
         detail: '$631.08',
-        action: 'Payment Received'
+        action: 'Payment Received',
+        status: 'success'
     },
     {
         type: 'Home',
@@ -15,7 +16,8 @@ const events = [
         policyNumber: 'HO0000343',
         date: moment().format('ll'),
         detail: '$7.77',
-        action: 'Payment Received'
+        action: 'Payment Received',
+        status: 'success'
     },
     {
         type: 'Auto',
@@ -23,7 +25,8 @@ const events = [
         policyNumber: 'CAA000008',
         date: moment().format('ll'),
         detail: 'Explosion',
-        action: 'Claim Reported'
+        action: 'Claim Reported',
+        status: 'success'
     },
     {
         type: 'Auto',
@@ -31,7 +34,8 @@ const events = [
         policyNumber: 'CAA00000264',
         date: moment().format('ll'),
         detail: '$631.08',
-        action: 'Payment Denied'
+        action: 'Payment Denied',
+        status: 'error'
     }
 ];
 

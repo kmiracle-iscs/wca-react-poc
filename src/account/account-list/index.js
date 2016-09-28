@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { AccountItem } from '../account-item'
+import { Link } from 'react-router';
+
+
 import { getAccounts } from '../actions';
 
 
@@ -27,7 +29,9 @@ export class AccountList extends React.Component {
                         </tr>
                     {this.props.accounts.map(account => {
                         return (<tr key={account.id}>
-                            <td>{account.accountNumber}</td>
+                            <td>
+                                <Link to={`/account/${account.accountNumber}`} className="nav-item nav-link active">{account.accountNumber}</Link>
+                            </td>
                             <td>{account.dueDt}</td>
                             <td>{account.accountBalanceAmt}</td>
                             <td>{account.currentDueAmt}</td>

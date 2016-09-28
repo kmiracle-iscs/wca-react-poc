@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../index.css';
 import { connect } from 'react-redux';
 import React from 'react';
 
-// App
+
 import configureStore from '../store';
+import { Nav } from './components/nav-component';
 import { SideNav } from './components/side-nav';
 import { AgentCard } from '../agent/agent-card';
 import { loggedIn } from '../auth/auth-service';
@@ -17,9 +17,6 @@ export class App extends React.Component {
         this.dispatch = props.dispatch;
     }
 
-    componentWillReceiveProps(nextProps) {
-    }
-
     render() {
         return (
             <div>
@@ -30,6 +27,7 @@ export class App extends React.Component {
                             <AgentCard />
                         </div>
                         <div className={`col-lg-9 p-l-3 m-t-3`}>
+                            <Nav />
                             {this.props.children}
                         </div>
                     </div>) : (

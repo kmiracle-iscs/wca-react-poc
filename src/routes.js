@@ -1,6 +1,7 @@
 import { App } from './app'
 import { Login} from './auth/login'
 import { Dashboard } from './app/components/dashboard-component'
+import { AccountItem } from './account/account-item';
 import { loggedIn, logout } from './auth/auth-service';
 
 
@@ -27,13 +28,27 @@ export const routes = {
             onEnter: requireAuth
         },
         {
+            path: 'account/:id',
+            component: AccountItem
+        },
+        {
+            path: 'policy/:policyId'
+        },
+        {
             path: 'login',
-            component: Login
+            component: Login,
+            onEnter: (nextState, replace) => {
+                // go to dashboard if we're already logged in
+                if (loggedIn()) {
+                    replace({
+                        pathname: '/dashboard'
+                    });
+                }
+            }
         },
         {
             path: 'logout',
             onEnter: (nextState, replace) => {
-                // dispatch logout
                 logout();
 
                 replace({

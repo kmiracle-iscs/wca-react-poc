@@ -20,8 +20,9 @@ export class PolicyList extends React.Component {
                     <tbody>
                         {this.props.policies.map(policy => {
                             return (<tr key={policy.id}>
-                                <td>{policy.id}</td>
                                 <td>{policy.policyNumber}</td>
+                                <td>{policy.type}</td>
+                                <td>{policy.expirationDt}</td>
                             </tr>)
                         })}
                     </tbody>
