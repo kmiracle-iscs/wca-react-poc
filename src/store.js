@@ -6,6 +6,7 @@ import accounts from './account/reducers';
 import policies from './policy/reducers';
 import auth from './auth/login/reducers';
 import events from './timeline/reducers';
+import agent from './agent/reducers';
 
 const initialState = {
     auth: {
@@ -15,7 +16,12 @@ const initialState = {
     },
     policies: [],
     accounts: [],
-    events: []
+    events: [],
+    agent: {
+        agentNumber: null,
+        displayLabel: null,
+        contacts: []
+    }
 };
 
 
@@ -23,7 +29,8 @@ const reducer = combineReducers({
     accounts,
     policies,
     auth,
-    events
+    events,
+    agent
 });
 
 

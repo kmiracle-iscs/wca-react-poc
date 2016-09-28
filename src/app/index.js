@@ -6,6 +6,7 @@ import React from 'react';
 // App
 import configureStore from '../store';
 import { SideNav } from './components/side-nav';
+import { AgentCard } from '../agent/agent-card';
 import { loggedIn } from '../auth/auth-service';
 
 export const store = configureStore();
@@ -26,6 +27,7 @@ export class App extends React.Component {
                     <div className="m-t-2">
                         <div className="col-lg-3 m-t-3 p-r-3 p-l-0">
                             <SideNav />
+                            <AgentCard />
                         </div>
                         <div className={`col-lg-9 p-l-3 m-t-3`}>
                             {this.props.children}
