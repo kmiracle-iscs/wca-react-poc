@@ -4,6 +4,7 @@ import React from 'react';
 
 
 import configureStore from '../store';
+import { Nav } from './components/nav-component';
 import { SideNav } from './components/side-nav';
 import { loggedIn } from '../auth/auth-service';
 
@@ -24,6 +25,7 @@ export class App extends React.Component {
                             <SideNav />
                         </div>
                         <div className={`col-lg-9 p-l-3 m-t-3`}>
+                            <Nav />
                             {this.props.children}
                         </div>
                     </div>) : (

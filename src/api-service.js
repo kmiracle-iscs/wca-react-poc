@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 
+import ConfigService from './config-service';
 import { loggedIn, getBearerToken } from './auth/auth-service';
 
 
@@ -19,13 +20,13 @@ axios.interceptors.request.use(
 
 export default class ApiService {
     constructor() {
-        this.baseUrl = 'https://api.iscs.io/api/v2/iic-ceg/';
+        this.baseUrl = ConfigService.baseUrl;
         this.config = {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'X-ISCS-API-KEY': '5damt3xpd589e84ftg8bxx9n',
-                'ISCS_API_KEY': '5damt3xpd589e84ftg8bxx9n'
+                'X-ISCS-API-KEY': ConfigService.apiKey,
+                'ISCS_API_KEY': ConfigService.apiKey
             }
         };
     }
