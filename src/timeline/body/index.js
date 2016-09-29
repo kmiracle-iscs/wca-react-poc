@@ -41,6 +41,7 @@ export class Timeline extends React.Component {
 
 Timeline.propTypes = {
     events: React.PropTypes.array.isRequired,
+    isFetching: React.PropTypes.bool.isRequired,
     getTimelineEvents: React.PropTypes.func.isRequired
 };
 
@@ -51,7 +52,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-    return { events: state.events };
+    return {
+        isFetching: state.events.isFetching,
+        events: state.events.items
+    };
 }
 
 Timeline = connect(mapStateToProps, mapDispatchToProps)(Timeline);

@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 import ApiService from '../../api-service';
 import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGIN_FAILURE, LOGOUT_REQUEST } from '../../constants';
 
+
 export function loginRequest() {
     return {
         type: LOGIN_REQUEST
@@ -37,6 +38,10 @@ export function login(user) {
         const api = new ApiService();
         return api.post('login', JSON.stringify(user))
             .then(json => {
+                localStorage.setItem('iscs-wca-react-poc', JSON.stringify({
+                    bearerToken: json.bearerToken,
+                    activeCustomerId: json.customerId
+                }));
                 dispatch(loginResponse(json));
                 browserHistory.push('/dashboard');
             })

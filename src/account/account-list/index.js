@@ -18,7 +18,7 @@ export class AccountList extends React.Component {
     render() {
         return (
             <div className="m-t-3">
-                <h4>Accounts</h4>
+                <h4>Accounts {this.props.isFetching && <img src="ajax-loader.gif" />}</h4>
                 <table className="table">
                     <tbody>
                         <tr>
@@ -45,6 +45,7 @@ export class AccountList extends React.Component {
 }
 
 AccountList.propTypes = {
+    isFetching: React.PropTypes.bool.isRequired,
     accounts: React.PropTypes.array.isRequired,
     getAccounts: React.PropTypes.func.isRequired
 };
@@ -56,7 +57,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-    return { accounts: state.accounts };
+    return {
+        isFetching: state.accounts.isFetching,
+        accounts: state.accounts.items
+    };
 }
 
 AccountList = connect(mapStateToProps, mapDispatchToProps)(AccountList);

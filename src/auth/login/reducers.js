@@ -16,13 +16,6 @@ export default function reduceAuth(state = {
                 activeCustomerId: action.user.customerId
             });
 
-        case LOGOUT_REQUEST:
-            return Object.assign({}, state, {
-                isLoggedIn: false,
-                bearerToken: null,
-                activeCustomerId: null
-            });
-
         default:
             return state
     }
