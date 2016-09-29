@@ -33,6 +33,7 @@ module.exports = {
     ],
     devtool: WEBPACK_DEVTOOL,
     output: {
+        publicPath: '/',
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
     },

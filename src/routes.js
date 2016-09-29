@@ -2,15 +2,21 @@ import { App } from './app'
 import { Login} from './auth/login'
 import { Dashboard } from './app/components/dashboard-component'
 import { AccountItem } from './account/account-item';
-import { loggedIn, logout } from './auth/auth-service';
+import { loggedIn, logout, hasSavedSession } from './auth/auth-service';
+import { store } from './app';
+import { initFromLocalStorage } from './actions';
 
 
 function requireAuth(nextState, replace) {
     if (!loggedIn()) {
-        replace({
-            pathname: '/login',
-            state: { nextPathname: nextState.location.pathname }
-        });
+        if (hasSavedSession()) {
+            store.dispatch(initFromLocalStorage());
+        } else {
+            replace({
+                pathname: '/login',
+                state: { nextPathname: nextState.location.pathname }
+            });
+        }
     }
 }
 
@@ -29,10 +35,12 @@ export const routes = {
         },
         {
             path: 'account/:id',
-            component: AccountItem
+            component: AccountItem,
+            onEnter: requireAuth
         },
         {
-            path: 'policy/:policyId'
+            path: 'policy/:policyId',
+            onEnter: requireAuth
         },
         {
             path: 'login',

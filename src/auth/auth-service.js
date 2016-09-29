@@ -5,6 +5,10 @@ export function loggedIn() {
     return store.getState().auth.isLoggedIn;
 }
 
+export function hasSavedSession() {
+    return !!localStorage.getItem('iscs-wca-react-poc');
+}
+
 export function logout() {
     store.dispatch(logoutRequest());
 }

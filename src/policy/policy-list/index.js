@@ -15,7 +15,7 @@ export class PolicyList extends React.Component {
     render() {
         return (
             <div className="m-t-3">
-                <h4>Policies</h4>
+                <h4>Policies {this.props.isFetching && <img src="ajax-loader.gif" />}</h4>
                 <table className="table">
                     <tbody>
                         {this.props.policies.map(policy => {
@@ -33,6 +33,7 @@ export class PolicyList extends React.Component {
 }
 
 PolicyList.propTypes = {
+    isFetching: React.PropTypes.bool.isRequired,
     policies: React.PropTypes.array.isRequired,
     getPolicies: React.PropTypes.func.isRequired
 };
@@ -44,7 +45,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-    return { policies: state.policies };
+    return {
+        isFetching: state.policies.isFetching,
+        policies: state.policies.items
+    };
 }
 
 PolicyList = connect(mapStateToProps, mapDispatchToProps)(PolicyList);
