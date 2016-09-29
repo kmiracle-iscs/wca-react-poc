@@ -26,6 +26,11 @@ const initialState = {
     events: {
         isFetching: false,
         items: []
+    },
+    agent: {
+        isFetching: false,
+        contactAddress: {},
+        contacts: []
     }
 };
 

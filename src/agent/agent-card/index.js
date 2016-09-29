@@ -17,7 +17,7 @@ export class AgentCard extends React.Component {
 
     render() {
         return (
-            <div className={styles['agent-panel']}>
+            <div hidden={this.props.agent.isFetching} className={styles['agent-panel']}>
                 <div className={styles['agent-address']}>
                     <div className={styles['location']}>{this.props.agent.displayLabel}</div>
                     <div className={styles['address']}>{this.props.agent.contactAddress.address}
@@ -46,6 +46,7 @@ export class AgentCard extends React.Component {
 }
 
 AgentCard.propTypes = {
+    isFetching: React.PropTypes.bool.isRequired,
     agent: React.PropTypes.object.isRequired,
     getAgent: React.PropTypes.func.isRequired
 }
@@ -57,7 +58,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-    return { agent: state.agent };
+    return { 
+        isFetching: state.agent.isFetching,
+        agent: state.agent
+    };
 }
 
 AgentCard = connect(mapStateToProps, mapDispatchToProps)(AgentCard);
