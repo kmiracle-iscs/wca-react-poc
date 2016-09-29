@@ -6,6 +6,7 @@ import accounts from './account/reducers';
 import policies from './policy/reducers';
 import auth from './auth/login/reducers';
 import events from './timeline/reducers';
+import agent from './agent/reducers';
 import { LOGOUT_REQUEST, INIT_FROM_LOCAL_STORAGE } from './constants';
 
 const initialState = {
@@ -25,6 +26,11 @@ const initialState = {
     events: {
         isFetching: false,
         items: []
+    },
+    agent: {
+        isFetching: false,
+        contactAddress: {},
+        contacts: []
     }
 };
 
@@ -33,7 +39,8 @@ const reducer = combineReducers({
     accounts,
     policies,
     auth,
-    events
+    events,
+    agent
 });
 
 
