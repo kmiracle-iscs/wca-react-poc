@@ -18,8 +18,7 @@ const initialState = {
     accounts: [],
     events: [],
     agent: {
-        agentNumber: null,
-        displayLabel: null,
+        contactAddress: {},
         contacts: []
     }
 };

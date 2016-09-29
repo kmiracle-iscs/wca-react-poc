@@ -41,7 +41,7 @@ export function login(user) {
                 browserHistory.push('/dashboard');
             })
             .catch(error => {
-                dispatch(loginFailure())
+                dispatch(loginFailure());
             });
     }
 }
