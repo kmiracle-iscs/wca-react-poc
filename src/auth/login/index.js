@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { connect } from 'react-redux';
 
 
-import { login } from './actions';
+import { login } from './../actions';
 
 export class Login extends React.Component {
     constructor(props) {

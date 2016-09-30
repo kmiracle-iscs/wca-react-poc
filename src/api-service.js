@@ -2,7 +2,7 @@ import axios from 'axios';
 import _ from 'lodash';
 
 
-import ConfigService from './config-service';
+import ConfigService from './config/config-service';
 import { loggedIn, getBearerToken } from './auth/auth-service';
 
 

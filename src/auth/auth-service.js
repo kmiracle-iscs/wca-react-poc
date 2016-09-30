@@ -1,5 +1,5 @@
 import { store } from '../app';
-import { logoutRequest } from './login/actions';
+import { logoutRequest } from './actions';
 
 export function loggedIn() {
     return store.getState().auth.isLoggedIn;

@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT_REQUEST } from '../../constants';
+import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT_REQUEST } from '../constants';
 
 export default function reduceAuth(state = {
     isLoggedIn: false,
