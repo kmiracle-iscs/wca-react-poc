@@ -4,7 +4,8 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 
 import accounts from './account/reducers';
 import policies from './policy/reducers';
-import auth from './auth/login/reducers';
+import auth from './auth/reducers';
+import config from './config/reducers';
 import events from './timeline/reducers';
 import agent from './agent/reducers';
 import { LOGOUT_REQUEST, INIT_FROM_LOCAL_STORAGE } from './constants';
@@ -14,6 +15,10 @@ const initialState = {
         isLoggedIn: false,
         bearerToken: null,
         activeCustomerId: null
+    },
+    config: {
+        isFetching: false,
+        features: {}
     },
     policies: {
         isFetching: false,
@@ -37,6 +42,7 @@ const initialState = {
 // Combine individual reducers for each part of the store.
 const reducer = combineReducers({
     accounts,
+    config,
     policies,
     auth,
     events,

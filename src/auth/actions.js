@@ -2,8 +2,8 @@ import 'babel-polyfill';
 import { browserHistory } from 'react-router';
 
 
-import ApiService from '../../api-service';
-import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGIN_FAILURE, LOGOUT_REQUEST } from '../../constants';
+import ApiService from '../api-service';
+import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGIN_FAILURE, LOGOUT_REQUEST } from '../constants';
 
 
 export function loginRequest() {
