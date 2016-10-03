@@ -19,7 +19,7 @@ export default function configConnected(WrappedComponent) {
 
         render() {
             if (_.isEmpty(this.props.features)) {
-                return (<div>Loading...</div>)
+                return (<div></div>)
             } else {
                 return (
                     <div>

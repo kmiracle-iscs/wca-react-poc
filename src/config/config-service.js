@@ -1,6 +1,33 @@
 const mockData = {
     features: {
         AccountList: true
+    },
+    language: "english",
+    translations: {
+        english: {
+            general: {
+                welcome: "Welcome!"
+            },
+            account: {
+                header: "Accounts",
+                number: "Account Number",
+                dueDt: "Due Date",
+                balance: "Balance",
+                due: "Due"
+            }
+        },
+        spanish: {
+            general: {
+                welcome: "Bienvenido"
+            },
+            account: {
+                header: "Cuenta",
+                number: "Número de Cuenta",
+                dueDt: "Fecha de Vencimiento",
+                balance: "Balance",
+                due: "Debido"
+            }
+        }
     }
 };
 
@@ -13,7 +40,7 @@ export default class ConfigService {
         return new Promise(resolve => {
             setTimeout(function() {
                 resolve(mockData);
-            }, 6000)
+            }, 1000)
         });
     }
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 
 
 import { getAccounts } from '../actions';
+import T from '../../config/translate';
 
 
 export class AccountList extends React.Component {
@@ -18,14 +19,14 @@ export class AccountList extends React.Component {
     render() {
         return (
             <div className="m-t-3">
-                <h4>Accounts {this.props.isFetching && <img src="ajax-loader.gif" />}</h4>
+                <h4><T path="account.header" /> {this.props.isFetching && <img src="ajax-loader.gif" />}</h4>
                 <table className="table">
                     <tbody>
                         <tr>
-                            <th>Account Number</th>
-                            <th>Due Date</th>
-                            <th>Balance</th>
-                            <th>Due</th>
+                            <th><T path="account.number"/></th>
+                            <th><T path="account.dueDt" /></th>
+                            <th><T path="account.balance" /></th>
+                            <th><T path="account.due"/></th>
                         </tr>
                     {this.props.accounts.map(account => {
                         return (<tr key={account.id}>

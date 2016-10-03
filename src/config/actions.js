@@ -1,5 +1,5 @@
 import 'babel-polyfill';
-import { CONFIG_REQUEST, CONFIG_RESPONSE, CONFIG_FAILURE } from '../constants';
+import { CONFIG_REQUEST, CONFIG_RESPONSE, CONFIG_FAILURE, CHANGE_LANGUAGE } from '../constants';
 import ConfigService from './config-service';
 
 export function configRequest() {
@@ -34,5 +34,12 @@ export function getConfig() {
             .catch(error => {
                 dispatch(configFailure())
             });
+    }
+}
+
+export function changeLanguage(language) {
+    return {
+        type: CHANGE_LANGUAGE,
+        language
     }
 }

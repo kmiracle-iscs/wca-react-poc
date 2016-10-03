@@ -49,7 +49,7 @@ AgentCard.propTypes = {
     isFetching: React.PropTypes.bool.isRequired,
     agent: React.PropTypes.object.isRequired,
     getAgent: React.PropTypes.func.isRequired
-}
+};
 
 function mapDispatchToProps(dispatch) {
     return {
