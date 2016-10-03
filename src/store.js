@@ -18,7 +18,9 @@ const initialState = {
     },
     config: {
         isFetching: false,
-        features: {}
+        features: {},
+        language: "",
+        translations: {}
     },
     policies: {
         isFetching: false,
