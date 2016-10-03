@@ -1,5 +1,6 @@
 import thunkMiddleware from 'redux-thunk'
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
+import identity from 'lodash/identity';
 
 
 import accounts from './account/reducers';
@@ -72,11 +73,26 @@ const rootReducer = (state, action) => {
 };
 
 
+// middleware for these redux devtools (if present): https://github.com/zalmoxisus/redux-devtools-extension
+const getDevToolsExtension = () => {
+    if (typeof window === 'undefined') {
+        return identity;
+    }
+
+    const tools = window.devToolsExtension;
+
+    return tools ? tools() : identity;
+};
+
+
 export default function configureStore(preloadedState = initialState) {
     return createStore(
         rootReducer,
         preloadedState,
-        applyMiddleware(thunkMiddleware),
+        compose(
+            applyMiddleware(thunkMiddleware),
+            getDevToolsExtension()
+        )
     )
 }
 
