@@ -1,6 +1,7 @@
 const mockData = {
     features: {
-        AccountList: true
+        AccountList: true,
+        AgentCard: true
     }
 };
 
