@@ -27,7 +27,9 @@ const mockData = {
                 balance: "Balance",
                 due: "Debido"
             }
-        }
+        },
+        AccountList: true,
+        AgentCard: true
     }
 };
 
