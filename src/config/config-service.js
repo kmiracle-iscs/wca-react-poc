@@ -1,6 +1,7 @@
 const mockData = {
     features: {
-        AccountList: true
+        AccountList: true,
+        AgentCard: true
     },
     language: "english",
     translations: {
@@ -28,8 +29,6 @@ const mockData = {
                 due: "Debido"
             }
         },
-        AccountList: true,
-        AgentCard: true
     }
 };
 
