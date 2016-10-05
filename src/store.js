@@ -10,6 +10,7 @@ import config from './config/reducers';
 import events from './timeline/reducers';
 import agent from './agent/reducers';
 import { LOGOUT_REQUEST, INIT_FROM_LOCAL_STORAGE } from './constants';
+import { recordingMiddleware as bugReporterMiddleware } from './bug-reporter/history';
 
 const initialState = {
     auth: {
@@ -90,7 +91,7 @@ export default function configureStore(preloadedState = initialState) {
         rootReducer,
         preloadedState,
         compose(
-            applyMiddleware(thunkMiddleware),
+            applyMiddleware(thunkMiddleware, bugReporterMiddleware),
             getDevToolsExtension()
         )
     )
