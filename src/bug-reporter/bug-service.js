@@ -8,10 +8,6 @@ const emailState = (issue, state) => {
     return axios.post(
         'http://162.243.89.232:5000/bug', // TODO: externalize
         {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        {
             description: 'Bug from WCA React Demo',
             emailTo: 'david.livingston@iscs.com',
             contactInfo: issue.contact,
@@ -19,6 +15,10 @@ const emailState = (issue, state) => {
             expectedResults: issue.expected,
             actualResults: issue.actual,
             state
+        },
+        {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         }
     );
 };
