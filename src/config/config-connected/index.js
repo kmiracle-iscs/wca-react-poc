@@ -13,9 +13,11 @@ export default function configConnected(WrappedComponent) {
             super(props)
         }
 
-        componentWillMount() {
-            this.props.getConfig();
-        }
+        // componentWillMount() {
+        //     if (_.isEmpty(this.props.features)) {
+        //         this.props.getConfig();
+        //     }
+        // }
 
         render() {
             if (_.isEmpty(this.props.features)) {
@@ -40,11 +42,11 @@ export default function configConnected(WrappedComponent) {
         }
     }
 
-    function mapDispatchToProps(dispatch) {
-        return {
-            getConfig: () => {dispatch(getConfig())}
-        }
-    }
+    // function mapDispatchToProps(dispatch) {
+    //     return {
+    //         getConfig: () => {dispatch(getConfig())}
+    //     }
+    // }
 
-    return connect(mapStateToProps, mapDispatchToProps)(ConfigConnectedBase);
+    return connect(mapStateToProps)(ConfigConnectedBase);
 }

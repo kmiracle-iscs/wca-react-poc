@@ -11,11 +11,11 @@ export default class T extends React.Component {
         super(props);
     }
 
-    componentWillMount() {
-        if (_.isEmpty(this.props.translations)) {
-            this.props.getConfig();
-        }
-    }
+    // componentWillMount() {
+    //     if (_.isEmpty(this.props.translations)) {
+    //         this.props.getConfig();
+    //     }
+    // }
 
     translate(path) {
         return _.get(this.props.translations, `${this.props.language}.${path}`);
@@ -38,11 +38,11 @@ T.propTypes = {
     translations: React.PropTypes.object.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
-    return {
-        getConfig: () => {dispatch(getConfig())}
-    }
-}
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         getConfig: () => {dispatch(getConfig())}
+//     }
+// }
 
 function mapStateToProps(state) {
     return {
@@ -51,4 +51,4 @@ function mapStateToProps(state) {
     };
 }
 
-T = connect(mapStateToProps, mapDispatchToProps)(T);
+T = connect(mapStateToProps)(T);

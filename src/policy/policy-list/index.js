@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getPolicies } from '../actions';
+import T from '../../config/translate';
+
 
 export class PolicyList extends React.Component {
     constructor(props) {
@@ -15,7 +17,7 @@ export class PolicyList extends React.Component {
     render() {
         return (
             <div className="m-t-3">
-                <h4>Policies {this.props.isFetching && <img src="ajax-loader.gif" />}</h4>
+                <h4><T path="policy.policies" /> {this.props.isFetching && <img src="ajax-loader.gif" />}</h4>
                 <table className="table">
                     <tbody>
                         {this.props.policies.map(policy => {

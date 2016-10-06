@@ -4,6 +4,8 @@ import moment from 'moment';
 
 import { getTimelineEvents } from '../actions';
 import { TimelineHeader } from '../header';
+import T from '../../config/translate';
+
 
 export class Timeline extends React.Component {
     constructor(props) {
@@ -18,7 +20,7 @@ export class Timeline extends React.Component {
         return (
             <div>
                 <TimelineHeader />
-                <h4>Recent Activity</h4>
+                <h4><T path="timeline.recentActivity"/></h4>
                 <table className="table">
                     <tbody>
                     {this.props.events.map(event => {
