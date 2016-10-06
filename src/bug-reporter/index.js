@@ -130,8 +130,8 @@ export default class BugReporter extends Component {
         const questions = this._getQuestions();
 
         return questions.map(q => {
-            const value = (this.state.inputs[q.id] || '').trim(),
-                error = value ? null : 'required';
+            const value = (this.state.inputs[q.id] || ''),
+                error = value.trim() ? null : 'required';
 
             return Object.assign({}, q, { value, error });
         });
