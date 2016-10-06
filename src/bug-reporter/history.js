@@ -1,3 +1,12 @@
+/*
+    The functions in this file are specific to these redux dev tools:
+        https://github.com/zalmoxisus/redux-devtools-extension
+
+    They allow us to recreate a json blob almost identical to the
+        download / export feature of that chrome extension. Our
+        exported json is compatible with the upload / import feature
+        of the extension.
+ */
 import cloneDeep from 'lodash/cloneDeep';
 
 
