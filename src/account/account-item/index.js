@@ -37,9 +37,9 @@ const RecentPayments = ({account}) =>
             <th>Amount</th>
             <th>Status</th>
         </tr>
-        {account.recent.payments.map((payment, index) => {
+        {account.recent.payments.map((payment) => {
             return (
-                <tr key={index}>
+                <tr key={payment.id}>
                     <td>
                         {payment.id}
                     </td>
