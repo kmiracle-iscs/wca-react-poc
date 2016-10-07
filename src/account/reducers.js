@@ -1,5 +1,6 @@
 import { ACCOUNTS_REQUEST, ACCOUNTS_RESPONSE, ACCOUNTS_FAILURE } from '../constants';
 
+
 const reduceAccounts = (state = {}, action) => {
     switch (action.type) {
         case ACCOUNTS_REQUEST:

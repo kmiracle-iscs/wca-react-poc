@@ -2,6 +2,7 @@ import 'babel-polyfill';
 import { AGENT_REQUEST, AGENT_RESPONSE, AGENT_FAILURE } from '../constants';
 import AgentService from './agent-service';
 
+
 export const agentRequest = () => {
     return {
         type: AGENT_REQUEST

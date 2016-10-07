@@ -1,5 +1,6 @@
 import { AGENT_REQUEST, AGENT_RESPONSE, AGENT_FAILURE } from '../constants';
 
+
 const reduceAgent = (state = {}, action) => {
     switch(action.type) {
         case AGENT_REQUEST:

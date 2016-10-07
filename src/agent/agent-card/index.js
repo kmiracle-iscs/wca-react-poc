@@ -6,8 +6,9 @@ import FaPhone from 'react-icons/lib/fa/phone';
 import { getAgent } from '../actions';
 import styles from '../../index.css';
 
+
 export class AgentCard extends React.Component {
-    
+
     componentWillMount() {
         this.props.getAgent();
     }

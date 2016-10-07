@@ -12,6 +12,7 @@ import events from './timeline/reducers';
 import agent from './agent/reducers';
 import { LOGOUT_REQUEST, INIT_FROM_LOCAL_STORAGE } from './constants';
 
+
 const initialState = {
     auth: {
         isLoggedIn: false,
