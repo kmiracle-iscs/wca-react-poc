@@ -8,9 +8,6 @@ import styles from '../../index.css';
 
 
 export class AccountItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillMount() {
         if (_.isEmpty(this.props.account)) {
@@ -84,11 +81,11 @@ AccountItem.propTypes = {
     account: React.PropTypes.object.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return {
         getAccounts: () => {dispatch(getAccounts())}
     }
-}
+};
 
 const mapStateToProps = (state, ownProps) => ({
     account: _.find(state.accounts.items, ['id', ownProps.params.id]) || {}

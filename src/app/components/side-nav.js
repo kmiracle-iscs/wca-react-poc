@@ -7,9 +7,6 @@ import T from '../../config/translate';
 
 
 export class SideNav extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { login } from './../actions';
 
+
 export class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -45,14 +46,14 @@ Login.propTypes = {
     login: React.PropTypes.func.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return {
         login: (user) => {dispatch(login(user))}
     }
-}
+};
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return state.auth;
-}
+};
 
 Login = connect(mapStateToProps, mapDispatchToProps)(Login);

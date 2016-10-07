@@ -1,6 +1,6 @@
 import { AGENT_REQUEST, AGENT_RESPONSE, AGENT_FAILURE } from '../constants';
 
-export default function reduceAgent(state = {}, action) {
+const reduceAgent = (state = {}, action) => {
     switch(action.type) {
         case AGENT_REQUEST:
             return Object.assign({}, state, {
@@ -19,4 +19,6 @@ export default function reduceAgent(state = {}, action) {
         default:
             return state;
     }
-}
+};
+
+export default reduceAgent;

@@ -5,20 +5,29 @@ import { AccountItem } from './account/account-item';
 import { loggedIn, logout, hasSavedSession } from './auth/auth-service';
 import { store } from './app';
 import { initFromLocalStorage } from './actions';
+import { getConfig } from './config/actions';
+import { hasConfig } from './config/config-service';
 
 
-function requireAuth(nextState, replace) {
+const requireAuth = (nextState, replace, callback) => {
     if (!loggedIn()) {
         if (hasSavedSession()) {
             store.dispatch(initFromLocalStorage());
+            store.dispatch(getConfig()).then(() => {
+                callback();
+            });
+
         } else {
             replace({
                 pathname: '/login',
                 state: { nextPathname: nextState.location.pathname }
             });
+            callback();
         }
+    } else {
+        callback();
     }
-}
+};
 
 export const routes = {
     path: '/',
@@ -45,12 +54,28 @@ export const routes = {
         {
             path: 'login',
             component: Login,
-            onEnter: (nextState, replace) => {
-                // go to dashboard if we're already logged in
+            onEnter: (nextState, replace, callback) => {
+                
+                // this is not good. need to make this cleaner.
                 if (loggedIn()) {
                     replace({
                         pathname: '/dashboard'
                     });
+                    callback();
+                } else if (hasSavedSession()) {
+                    replace({
+                        pathname: '/dashboard'
+                    });
+                    store.dispatch(initFromLocalStorage());
+                    store.dispatch(getConfig()).then(() => {
+                        callback();
+                    });
+                } else if (!hasConfig()) {
+                    store.dispatch(getConfig()).then(() => {
+                        callback();
+                    })
+                } else {
+                    callback();
                 }
             }
         },

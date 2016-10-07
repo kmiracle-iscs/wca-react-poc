@@ -1,6 +1,6 @@
 import { CONFIG_REQUEST, CONFIG_RESPONSE, CONFIG_FAILURE, CHANGE_LANGUAGE } from '../constants';
 
-export default function reduceConfig(state = {}, action) {
+const reduceConfig = (state = {}, action) => {
     switch (action.type) {
         case CONFIG_REQUEST:
             return Object.assign({}, state, {
@@ -23,4 +23,6 @@ export default function reduceConfig(state = {}, action) {
         default:
             return state
     }
-}
+};
+
+export default reduceConfig;

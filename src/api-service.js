@@ -2,20 +2,20 @@ import axios from 'axios';
 import _ from 'lodash';
 
 
-import ConfigService from './config/config-service';
+import { baseUrl, apiKey } from './config/config-service';
 import { loggedIn, getBearerToken } from './auth/auth-service';
 
 
-function isApiRequest(config) {
-    return _.startsWith(config.url, ConfigService.baseUrl);
-}
+const isApiRequest = (config) => {
+    return _.startsWith(config.url, baseUrl);
+};
 
-function interceptApiRequests(config) {
+const interceptApiRequests = (config) => {
     if (loggedIn() && isApiRequest(config)) {
         config.headers.bearerToken = getBearerToken();
     }
     return config;
-}
+};
 
 axios.interceptors.request.use(
     interceptApiRequests,
@@ -25,13 +25,13 @@ axios.interceptors.request.use(
 
 export default class ApiService {
     constructor() {
-        this.baseUrl = ConfigService.baseUrl;
+        this.baseUrl = baseUrl;
         this.config = {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'X-ISCS-API-KEY': ConfigService.apiKey,
-                'ISCS_API_KEY': ConfigService.apiKey
+                'X-ISCS-API-KEY': apiKey,
+                'ISCS_API_KEY': apiKey
             }
         };
     }

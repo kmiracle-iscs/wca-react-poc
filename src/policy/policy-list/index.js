@@ -6,9 +6,6 @@ import T from '../../config/translate';
 
 
 export class PolicyList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillMount() {
         this.props.getPolicies();
@@ -40,17 +37,17 @@ PolicyList.propTypes = {
     getPolicies: React.PropTypes.func.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return {
         getPolicies: () => {dispatch(getPolicies())}
     }
-}
+};
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {
         isFetching: state.policies.isFetching,
         policies: state.policies.items
     };
-}
+};
 
 PolicyList = connect(mapStateToProps, mapDispatchToProps)(PolicyList);

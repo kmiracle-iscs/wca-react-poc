@@ -1,10 +1,11 @@
 import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT_REQUEST } from '../constants';
 
-export default function reduceAuth(state = {
+
+const reduceAuth = (state = {
     isLoggedIn: false,
     bearerToken: null,
     activeCustomerId: null
-}, action) {
+}, action) => {
     switch (action.type) {
         case LOGIN_REQUEST:
             return state;
@@ -19,4 +20,6 @@ export default function reduceAuth(state = {
         default:
             return state
     }
-}
+};
+
+export default reduceAuth;

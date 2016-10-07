@@ -8,9 +8,6 @@ import T from '../../config/translate';
 
 
 export class Timeline extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillMount() {
         this.props.getTimelineEvents();
@@ -47,17 +44,17 @@ Timeline.propTypes = {
     getTimelineEvents: React.PropTypes.func.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return {
         getTimelineEvents: () => {dispatch(getTimelineEvents())}
     }
-}
+};
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {
         isFetching: state.events.isFetching,
         events: state.events.items
     };
-}
+};
 
 Timeline = connect(mapStateToProps, mapDispatchToProps)(Timeline);

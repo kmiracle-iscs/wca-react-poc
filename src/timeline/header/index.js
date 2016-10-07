@@ -7,11 +7,7 @@ import T from '../../config/translate';
 
 
 export class TimelineHeader extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-
+    
     render() {
         const cssClasses = `col-md-5 ${styles.noPadding}`;
 
