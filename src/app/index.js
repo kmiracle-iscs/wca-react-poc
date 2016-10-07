@@ -8,6 +8,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import configureStore from '../store';
 import { Nav } from './components/nav-component';
 import { SideNav } from './components/side-nav';
+import BugReporter from '../bug-reporter';
 import AgentConfigurable from '../agent/agent-configurable';
 import { loggedIn } from '../auth/auth-service';
 
@@ -35,6 +36,7 @@ export class App extends React.Component {
                         {this.props.children}
                     </div>
             )}
+            <BugReporter />
             </div>
         )
     }

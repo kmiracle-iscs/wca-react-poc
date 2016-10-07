@@ -1,0 +1,34 @@
+.wrapper {
+  text-align: center;
+  padding: 25px;
+}
+
+.alert {
+  margin: 10px;
+}
+
+.question__error {
+  color: red;
+  text-align: right;
+}
+
+.questions {
+  padding: 25px;
+}
+
+.question {
+  max-width: 600px;
+  margin: 10px;
+}
+
+.question__label {
+  text-align: right;
+}
+
+.question__input {
+  width: 100%;
+}
+
+.submit-button {
+  text-transform: uppercase;
+}
