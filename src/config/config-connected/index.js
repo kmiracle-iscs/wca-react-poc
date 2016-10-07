@@ -3,19 +3,10 @@ import { connect } from 'react-redux'
 import _ from 'lodash';
 
 
-import { getConfig } from '../../config/actions';
 
-
-export default function configConnected(WrappedComponent) {
+const configConnected = (WrappedComponent) => {
 
     class ConfigConnectedBase extends React.Component {
-        constructor(props) {
-            super(props)
-        }
-
-        componentWillMount() {
-            this.props.getConfig();
-        }
 
         render() {
             if (_.isEmpty(this.props.features)) {
@@ -34,17 +25,13 @@ export default function configConnected(WrappedComponent) {
         features: React.PropTypes.object.isRequired
     };
 
-    function mapStateToProps(state) {
+    const mapStateToProps = (state) => {
         return {
             features: state.config.features
         }
-    }
+    };
 
-    function mapDispatchToProps(dispatch) {
-        return {
-            getConfig: () => {dispatch(getConfig())}
-        }
-    }
+    return connect(mapStateToProps)(ConfigConnectedBase);
+};
 
-    return connect(mapStateToProps, mapDispatchToProps)(ConfigConnectedBase);
-}
+export default configConnected;

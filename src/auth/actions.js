@@ -6,47 +6,50 @@ import ApiService from '../api-service';
 import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGIN_FAILURE, LOGOUT_REQUEST } from '../constants';
 
 
-export function loginRequest() {
+export const loginRequest = () => {
     return {
         type: LOGIN_REQUEST
     }
-}
+};
 
-export function loginResponse(user) {
+export const loginResponse = (user) => {
     return {
         type: LOGIN_RESPONSE,
         user
     }
-}
+};
 
-export function loginFailure() {
+export const loginFailure = () => {
     return {
         type: LOGIN_FAILURE
     }
-}
+};
 
-export function logoutRequest() {
+export const logoutRequest = () => {
     return {
         type: LOGOUT_REQUEST
     }
-}
+};
 
-export function login(user) {
-    return function (dispatch) {
-        dispatch(loginRequest());
+export const logout = () => dispatch => {
+    localStorage.removeItem('iscs-wca-react-poc');
+    dispatch(logoutRequest());
+};
 
-        const api = new ApiService();
-        return api.post('login', JSON.stringify(user))
-            .then(json => {
-                localStorage.setItem('iscs-wca-react-poc', JSON.stringify({
-                    bearerToken: json.bearerToken,
-                    activeCustomerId: json.customerId
-                }));
-                dispatch(loginResponse(json));
-                browserHistory.push('/dashboard');
-            })
-            .catch(error => {
-                dispatch(loginFailure());
-            });
-    }
-}
+export const login = (user) => dispatch => {
+    dispatch(loginRequest());
+
+    const api = new ApiService();
+    return api.post('login', JSON.stringify(user))
+        .then(json => {
+            localStorage.setItem('iscs-wca-react-poc', JSON.stringify({
+                bearerToken: json.bearerToken,
+                activeCustomerId: json.customerId
+            }));
+            dispatch(loginResponse(json));
+            browserHistory.push('/dashboard');
+        })
+        .catch(error => {
+            dispatch(loginFailure());
+        });
+};

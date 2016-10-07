@@ -3,7 +3,6 @@ import React from 'react';
 
 import configConnected from '../../config/config-connected';
 import { AccountList } from '../../account/account-list';
-import styles from '../../index.css';
 
 
 // Based on config that comes from parent class, determines which Account feature component to show

@@ -3,19 +3,8 @@ import { connect } from 'react-redux'
 import _ from 'lodash';
 
 
-import { getConfig } from '../../config/actions';
-
 
 export default class T extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    componentWillMount() {
-        if (_.isEmpty(this.props.translations)) {
-            this.props.getConfig();
-        }
-    }
 
     translate(path) {
         return _.get(this.props.translations, `${this.props.language}.${path}`);
@@ -38,17 +27,11 @@ T.propTypes = {
     translations: React.PropTypes.object.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
-    return {
-        getConfig: () => {dispatch(getConfig())}
-    }
-}
-
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {
         language: state.config.language,
         translations: state.config.translations
     };
-}
+};
 
-T = connect(mapStateToProps, mapDispatchToProps)(T);
+T = connect(mapStateToProps)(T);

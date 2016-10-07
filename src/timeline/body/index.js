@@ -4,11 +4,10 @@ import moment from 'moment';
 
 import { getTimelineEvents } from '../actions';
 import { TimelineHeader } from '../header';
+import T from '../../config/translate';
+
 
 export class Timeline extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillMount() {
         this.props.getTimelineEvents();
@@ -18,7 +17,7 @@ export class Timeline extends React.Component {
         return (
             <div>
                 <TimelineHeader />
-                <h4>Recent Activity</h4>
+                <h4><T path="timeline.recentActivity"/></h4>
                 <table className="table">
                     <tbody>
                     {this.props.events.map(event => {
@@ -45,17 +44,17 @@ Timeline.propTypes = {
     getTimelineEvents: React.PropTypes.func.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return {
         getTimelineEvents: () => {dispatch(getTimelineEvents())}
     }
-}
+};
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {
         isFetching: state.events.isFetching,
         events: state.events.items
     };
-}
+};
 
 Timeline = connect(mapStateToProps, mapDispatchToProps)(Timeline);

@@ -1,22 +1,23 @@
 import { store } from '../app';
-import { logoutRequest } from './actions';
+import { logout as logoutAction } from './actions';
 
-export function loggedIn() {
-    return store.getState().auth.isLoggedIn;
-}
 
-export function hasSavedSession() {
+export const loggedIn = () => {
+    return store.getState().auth.isAuthenticated;
+};
+
+export const hasSavedSession = () => {
     return !!localStorage.getItem('iscs-wca-react-poc');
-}
+};
 
-export function logout() {
-    store.dispatch(logoutRequest());
-}
+export const logout = () => {
+    store.dispatch(logoutAction());
+};
 
-export function getActiveCustomerId() {
+export const getActiveCustomerId = () => {
     return store.getState().auth.activeCustomerId;
-}
+};
 
-export function getBearerToken() {
+export const getBearerToken = () => {
     return store.getState().auth.bearerToken;
-}
+};

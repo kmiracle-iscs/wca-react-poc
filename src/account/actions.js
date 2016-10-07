@@ -3,37 +3,35 @@ import { ACCOUNTS_REQUEST, ACCOUNTS_RESPONSE, ACCOUNTS_FAILURE } from '../consta
 import AccountService from './account-service';
 
 
-export function accountsRequest() {
+export const accountsRequest = () => {
     return {
         type: ACCOUNTS_REQUEST
     }
-}
+};
 
-export function accountsResponse(accounts) {
+export const accountsResponse = (accounts) => {
     return {
         type: ACCOUNTS_RESPONSE,
         accounts
     }
-}
+};
 
-export function accountsFailure() {
+export const accountsFailure = () => {
     return {
         type: ACCOUNTS_FAILURE
     }
-}
+};
 
-export function getAccounts() {
-    return function (dispatch) {
-        dispatch(accountsRequest());
+export const getAccounts = () => dispatch => {
+    dispatch(accountsRequest());
 
-        const accountService = new AccountService();
+    const accountService = new AccountService();
 
-        return accountService.getAccounts()
-            .then(json => {
-                dispatch(accountsResponse(json));
-            })
-            .catch(error => {
-                dispatch(accountsFailure())
-            });
-    }
-}
+    return accountService.getAccounts()
+        .then(json => {
+            dispatch(accountsResponse(json));
+        })
+        .catch(error => {
+            dispatch(accountsFailure())
+        });
+};

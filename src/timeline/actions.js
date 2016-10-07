@@ -2,37 +2,36 @@ import 'babel-polyfill';
 import { TIMELINE_EVENTS_REQUEST, TIMELINE_EVENTS_RESPONSE, TIMELINE_EVENTS_FAILURE } from '../constants';
 import ActivityService from './activity-service';
 
-export function timelineEventsRequest() {
+
+export const timelineEventsRequest = () => {
     return {
         type: TIMELINE_EVENTS_REQUEST
     }
-}
+};
 
-export function timelineEventsResponse(events) {
+export const timelineEventsResponse = (events) => {
     return {
         type: TIMELINE_EVENTS_RESPONSE,
         events
     }
-}
+};
 
-export function timelineEventsFailure() {
+export const timelineEventsFailure = () => {
     return {
         type: TIMELINE_EVENTS_FAILURE
     }
-}
+};
 
-export function getTimelineEvents() {
-    return function (dispatch) {
-        dispatch(timelineEventsRequest());
+export const getTimelineEvents = () => dispatch => {
+    dispatch(timelineEventsRequest());
 
-        const activityService = new ActivityService();
+    const activityService = new ActivityService();
 
-        return activityService.getRecentEvents()
-            .then(json => {
-                dispatch(timelineEventsResponse(json));
-            })
-            .catch(error => {
-                dispatch(timelineEventsFailure())
-            });
-    }
-}
+    return activityService.getRecentEvents()
+        .then(json => {
+            dispatch(timelineEventsResponse(json));
+        })
+        .catch(error => {
+            dispatch(timelineEventsFailure())
+        });
+};

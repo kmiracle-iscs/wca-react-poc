@@ -1,6 +1,7 @@
 import { ACCOUNTS_REQUEST, ACCOUNTS_RESPONSE, ACCOUNTS_FAILURE } from '../constants';
 
-export default function reduceAccounts(state = {}, action) {
+
+const reduceAccounts = (state = {}, action) => {
     switch (action.type) {
         case ACCOUNTS_REQUEST:
             return Object.assign({}, state, {
@@ -18,4 +19,6 @@ export default function reduceAccounts(state = {}, action) {
         default:
             return state
     }
-}
+};
+
+export default reduceAccounts;

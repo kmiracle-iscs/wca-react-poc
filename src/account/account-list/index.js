@@ -8,9 +8,6 @@ import T from '../../config/translate';
 
 
 export class AccountList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillMount() {
         this.props.getAccounts();
@@ -51,17 +48,17 @@ AccountList.propTypes = {
     getAccounts: React.PropTypes.func.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return {
         getAccounts: () => {dispatch(getAccounts())}
     }
-}
+};
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {
         isFetching: state.accounts.isFetching,
         accounts: state.accounts.items
     };
-}
+};
 
 AccountList = connect(mapStateToProps, mapDispatchToProps)(AccountList);
