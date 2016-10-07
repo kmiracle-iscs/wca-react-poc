@@ -2,7 +2,7 @@ import { LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT_REQUEST } from '../constants';
 
 
 const reduceAuth = (state = {
-    isLoggedIn: false,
+    isAuthenticated: false,
     bearerToken: null,
     activeCustomerId: null
 }, action) => {
@@ -12,7 +12,7 @@ const reduceAuth = (state = {
 
         case LOGIN_RESPONSE:
             return Object.assign({}, state, {
-                isLoggedIn: true,
+                isAuthenticated: true,
                 bearerToken: action.user.bearerToken,
                 activeCustomerId: action.user.customerId
             });

@@ -16,7 +16,7 @@ import { recordingMiddleware as bugReporterMiddleware } from './bug-reporter/his
 
 const initialState = {
     auth: {
-        isLoggedIn: false,
+        isAuthenticated: false,
         bearerToken: null,
         activeCustomerId: null
     },
@@ -67,7 +67,7 @@ const rootReducer = (state, action) => {
         case INIT_FROM_LOCAL_STORAGE:
             return Object.assign({}, state, {
                 auth: {
-                    isLoggedIn: true,
+                    isAuthenticated: true,
                     bearerToken: action.bearerToken,
                     activeCustomerId: action.activeCustomerId
                 }

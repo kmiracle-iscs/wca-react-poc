@@ -3,7 +3,7 @@ import { logout as logoutAction } from './actions';
 
 
 export const loggedIn = () => {
-    return store.getState().auth.isLoggedIn;
+    return store.getState().auth.isAuthenticated;
 };
 
 export const hasSavedSession = () => {
