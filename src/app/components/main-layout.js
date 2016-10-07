@@ -4,6 +4,7 @@ import React from 'react';
 import { Nav } from './nav-component';
 import { SideNav } from './side-nav';
 import BugReporter from '../../bug-reporter';
+import LanguageSwitcher from './language';
 import AgentConfigurable from '../../agent/agent-configurable';
 
 
@@ -23,6 +24,7 @@ export class MainLayout extends React.Component {
                     </div>
                 </div>
                 <BugReporter />
+                <LanguageSwitcher />
             </div>
         )
     }

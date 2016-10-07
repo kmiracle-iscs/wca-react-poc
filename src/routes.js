@@ -26,7 +26,7 @@ export const routes = {
                     component: requireAuth(Dashboard)
                 },
                 {
-                    path: 'account/:id',
+                    path: '/account/:id',
                     component: requireAuth(AccountItem)
                 }
             ]
