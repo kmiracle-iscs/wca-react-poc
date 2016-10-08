@@ -40,6 +40,11 @@ class Question extends Component {
         const p = this.props,
             { placeholder, rows, value, readOnly } = p;
 
+        const onBlur = (e) => {
+            p.updateInput(p.id, e); // validate onBlur
+            p.blurInput(p.id);
+        };
+
         return (
             <div className={`${styles.question} row`}>
                 <label className={`${styles['question__label']} col-sm-3`}>
@@ -53,10 +58,10 @@ class Question extends Component {
                         readOnly,
                         rows,
                         onChange: e => p.updateInput(p.id, e),
-                        onBlur: e => p.updateInput(p.id, e) // validate onBlur
+                        onBlur
                     })}
                 </div>
-                { !!p.error &&
+                { (p.error && !p.suppressErrors) &&
                     <div className={styles['question__error']}>
                         { p.error }
                     </div>
@@ -96,15 +101,14 @@ export default class BugReporterView extends Component {
     constructor(props) {
         super(props);
 
-        // dumb view only controls expanding / collapsing form
-        //  all other state is passed as props from container
         this.state = {
-            isExpanded: false
+            isExpanded: false,
+            blurred:    {}
         };
     }
 
     render() {
-        const { isExpanded } = this.state,
+        const { isExpanded, blurred } = this.state,
             { questions, apiError, createdIssue, isWaiting, isValid } = this.props,
             { hideIssue, hideError, updateInput } = this.props,
             canSubmit = isValid && !isWaiting;
@@ -126,6 +130,8 @@ export default class BugReporterView extends Component {
                                 { questions.map(q =>
                                     <Question key={q.id}
                                               {...q}
+                                              blurInput={this._fieldBlurred.bind(this)}
+                                              suppressErrors={!blurred[q.id]}
                                               updateInput={updateInput}
                                               readOnly={isWaiting} />
                                 ) }
@@ -145,6 +151,17 @@ export default class BugReporterView extends Component {
                 </div>
             </div>
         )
+    }
+
+
+    _fieldBlurred (id) {
+        const { blurred } = this.state;
+
+        this.setState({
+            blurred: Object.assign({}, blurred, {
+                [id]: true
+            })
+        });
     }
 
 
