@@ -7,7 +7,7 @@ const mockData = {
     features: {
         AccountList: true,
         AgentCard: true,
-        CreateJiraIssues: true,
+        CreateJiraIssues: false,
     },
     language: "english",
     translations: {
