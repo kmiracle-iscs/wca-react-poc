@@ -40,11 +40,6 @@ class Question extends Component {
         const p = this.props,
             { placeholder, rows, value, readOnly } = p;
 
-        const onBlur = (e) => {
-            p.updateInput(p.id, e); // validate onBlur
-            p.blurInput(p.id);
-        };
-
         return (
             <div className={`${styles.question} row`}>
                 <label className={`${styles['question__label']} col-sm-3`}>
@@ -58,14 +53,14 @@ class Question extends Component {
                         readOnly,
                         rows,
                         onChange: e => p.updateInput(p.id, e),
-                        onBlur
+                        onBlur: () => p.blurInput(p.id)
                     })}
+                    { (p.error && !p.suppressErrors) &&
+                        <div className={styles['question__error']}>
+                            { p.error }
+                        </div>
+                    }
                 </div>
-                { (p.error && !p.suppressErrors) &&
-                    <div className={styles['question__error']}>
-                        { p.error }
-                    </div>
-                }
             </div>
         );
     }
