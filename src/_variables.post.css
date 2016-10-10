@@ -1,5 +1,5 @@
 :root {
-    --u-error--color: #a94442;
+    --u-error--color: red;
     --u-error-border-focused--color: var(--u-error--color);
     --u-error-box-shadow-focused--color: var(--50-gray-dark);
 

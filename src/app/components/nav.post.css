@@ -1,9 +1,10 @@
 // nav.post.css
+// @import "../../_variables.post.css"; // (if variables not imported by 'global.post.css')
 
 .main-nav {
 
   &.bootstrap-override {
-    background-color: var(--u-error--color);
+    background-color: var(--u-error--color) !important;
   }
 
   &__container {
