@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 
 import { getAccounts } from '../actions';
-import styles from '../../index.css';
+import './styles.post.css';
 
 
 const Balances = ({account}) =>
@@ -66,9 +66,9 @@ export class AccountItem extends React.Component {
             return <div></div>;
         } else {
             return (
-                <div className={styles.panel}>
+                <div className="account-item__panel">
                     <div className="row">
-                        <div className={`col col-lg-12`}>
+                        <div className="col col-lg-12">
                             <h3>{this.props.account.accountNumber}</h3>
                         </div>
                     </div>

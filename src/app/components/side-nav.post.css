@@ -1,0 +1,16 @@
+// side-nav.post.css
+
+.side-nav {
+  background: #fff;
+  padding: 15px 15px 0;
+
+  &__links-wrapper {
+    padding: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+
+  &__link {
+    padding-bottom: 20px;
+  }
+}

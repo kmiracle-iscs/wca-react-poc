@@ -1,0 +1,13 @@
+// nav.post.css
+
+.main-nav {
+
+  &.bootstrap-override {
+    background-color: #2658a5;
+  }
+
+  &__container {
+    max-width: 1400px;
+  }
+
+}

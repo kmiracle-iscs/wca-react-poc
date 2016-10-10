@@ -1,7 +1,7 @@
 "use strict";
 var webpack = require('webpack');
 var path = require('path');
-var loaders = require('./webpack.loaders');
+var common = require('./webpack.loaders');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const HOST = process.env.HOST || "127.0.0.1";
@@ -9,20 +9,17 @@ const PORT = process.env.PORT || "8888";
 const WEBPACK_DEVTOOL = 'source-map'; //process.env.WEBPACK_DEVTOOL || 'cheap-module-source-map';
 
 // global css
-loaders.push({
+common.loaders.push({
     test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
     loaders: [
         'style?sourceMap',
         'css'
     ]
 });
-// local css modules
-loaders.push({
-    test: /[\/\\]src[\/\\].*\.css$/,
-    loaders: [
-        'style?sourceMap',
-        'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
-    ]
+
+common.loaders.push({
+    test:   /\.post\.css$/,
+    loader: 'style-loader!css-loader!postcss-loader'
 });
 
 module.exports = {
@@ -41,7 +38,8 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     module: {
-        loaders
+        preLoaders: common.preLoaders,
+        loaders: common.loaders
     },
     devServer: {
         contentBase: "./public",
@@ -59,9 +57,12 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({
-            template: './src/template.html',
-            title: 'WCA React POC'
-        })
-    ]
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"development"'
+            }
+        }),
+        new HtmlWebpackPlugin(common.html)
+    ],
+    postcss: require('./postcss.config').dev
 };

@@ -7,6 +7,8 @@ import { Router } from 'react-router'
 
 import { routes } from './routes'
 import { store, history } from './app'
+import './global.post.css';
+import './global-utilities.post.css';
 
 
 render(

@@ -2,18 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux'
 import moment from 'moment';
 
-import styles from '../../index.css';
+
 import T from '../../config/translate';
 
 
 export class TimelineHeader extends React.Component {
-    
-    render() {
-        const cssClasses = `col-md-5 ${styles.noPadding}`;
 
+    render() {
         return (
-            <div className={`row m-b-3 ${styles.noMargin}`}>
-                <div className={cssClasses}>
+            <div className="u-no-margin row m-b-3">
+                <div className="u-no-padding col-md-5">
                     <span><strong><T path="timeline.welcome"/>, Doug Moore</strong></span>
                     <p><T path="timeline.status"/>: <T path="timeline.active"/> | <T path="timeline.accounts"/>: Auto, Homeowners</p>
                 </div>

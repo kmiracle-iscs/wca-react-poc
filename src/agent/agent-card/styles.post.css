@@ -1,0 +1,26 @@
+// agent-card/styles.post.css
+
+.agent-card {
+  background: #fff;
+  padding: 15px 15px 0;
+  margin-top: 25px;
+
+  &__contacts-wrapper {
+    padding-bottom: 5px;
+    line-height: 2em;
+  }
+
+  &__location {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  &__address {
+    padding-left: 10px;
+  }
+
+  &__contact-type, &__contact-value {
+    display: inline-block;
+    padding: 10px;
+  }
+}

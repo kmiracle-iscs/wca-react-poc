@@ -1,0 +1,8 @@
+// account-item/styles.post.css
+
+.account-item {
+  &__panel {
+    background: #fff;
+    padding: 20px 30px 20px;
+  }
+}

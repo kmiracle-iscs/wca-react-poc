@@ -1,0 +1,46 @@
+.bug-reporter {
+
+  &__alert {
+    margin: 10px;
+  }
+
+  &__wrapper {
+    text-align: center;
+    padding: 25px;
+  }
+
+  &__questions-wrapper {
+    padding: 25px;
+  }
+
+  &__submit-button {
+    text-transform: uppercase;
+  }
+
+}
+
+
+.bug-reporter-question {
+
+  max-width: 600px;
+  margin: 10px;
+
+  &__error {
+    color: red;
+    text-align: right;
+    text-transform: capitalize;
+  }
+
+  &__error::before {
+    content: "* ";
+  }
+
+  &__label {
+    text-align: right;
+  }
+
+  &__input {
+    width: 100%;
+  }
+
+}

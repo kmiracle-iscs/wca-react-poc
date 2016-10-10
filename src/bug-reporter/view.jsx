@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import noop from 'lodash/noop';
 
 
-import styles from './bug-reporter.css';
+import './styles.post.css';
 
 
 const Alert = ({ alertClass, children, dismiss }) =>
-    <div className={`${styles.alert} alert alert-${alertClass}`} role="alert">
+    <div className={`bug-reporter__alert alert alert-${alertClass}`} role="alert">
         <button onClick={dismiss} type="button" className="close" aria-hidden="true" aria-label="Close">
             <i className="fa fa-close"></i>
         </button>
@@ -41,13 +41,13 @@ class Question extends Component {
             { placeholder, rows, value, readOnly } = p;
 
         return (
-            <div className={`${styles.question} row`}>
-                <label className={`${styles['question__label']} col-sm-3`}>
+            <div className="bug-reporter-question row">
+                <label className="bug-reporter-question__label col-sm-3">
                     { p.label }
                 </label>
                 <div className="col-sm-9">
                     { React.createElement(p.type || 'input', {
-                        className: styles['question__input'],
+                        className: 'bug-reporter-question__input',
                         value,
                         placeholder,
                         readOnly,
@@ -56,7 +56,7 @@ class Question extends Component {
                         onBlur: () => p.blurInput(p.id)
                     })}
                     { (p.error && !p.suppressErrors) &&
-                        <div className={styles['question__error']}>
+                        <div className="bug-reporter-question__error">
                             { p.error }
                         </div>
                     }
@@ -110,7 +110,7 @@ export default class BugReporterView extends Component {
 
         return (
             <div className="row">
-                <div className={`${styles.wrapper} col col-lg-12`}>
+                <div className="bug-reporter__wrapper col col-lg-12">
                     <div>
                         <button type="button"
                                 className="btn btn-secondary"
@@ -121,7 +121,7 @@ export default class BugReporterView extends Component {
                     </div>
                     { isExpanded &&
                         <form>
-                            <div className={styles.questions}>
+                            <div className="bug-reporter__questions-wrapper">
                                 { questions.map(q =>
                                     <Question key={q.id}
                                               {...q}
@@ -133,7 +133,7 @@ export default class BugReporterView extends Component {
                             </div>
                             <div>
                                 <button type="submit"
-                                        className={`${styles['submit-button']} btn btn-primary`}
+                                        className="bug-reporter__submit-button btn btn-primary"
                                         disabled={!canSubmit}
                                         onClick={this._submit.bind(this)}>
                                     Send Bug Report

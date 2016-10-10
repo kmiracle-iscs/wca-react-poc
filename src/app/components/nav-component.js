@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router'
 
 
-import styles from '../../index.css';
+import './nav.post.css';
 import T from '../../config/translate';
 
 
@@ -10,8 +10,8 @@ export class Nav extends React.Component {
 
     render() {
         return (
-            <nav className={`navbar navbar-fixed-top navbar-dark bg-inverse ${styles.bgInverse}`}>
-                <div className={`container ${styles.container}`}>
+            <nav className="main-nav bootstrap-override navbar navbar-fixed-top navbar-dark bg-inverse">
+                <div className="container main-nav__container">
                 <a className="navbar-brand">Innovative Insurance Co.</a>
                 <ul className="nav navbar-nav pull-xs-right">
                     <li className="nav-item">
