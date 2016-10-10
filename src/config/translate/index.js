@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 
 
-export default class T extends React.Component {
+class T extends React.Component {
 
     translate(path) {
         return _.get(this.props.translations, `${this.props.language}.${path}`);
@@ -34,4 +34,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-T = connect(mapStateToProps)(T);
+export default T = connect(mapStateToProps)(T);

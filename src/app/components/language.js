@@ -3,7 +3,7 @@ import React from 'react';
 import { changeLanguage } from '../../config/actions';
 
 
-export default class LanguageSwitcher extends React.Component {
+class LanguageSwitcher extends React.Component {
 
     constructor(props) {
         super(props);
@@ -51,4 +51,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-LanguageSwitcher = connect(mapStateToProps, mapDispatchToProps)(LanguageSwitcher);
+export default LanguageSwitcher = connect(mapStateToProps, mapDispatchToProps)(LanguageSwitcher);
