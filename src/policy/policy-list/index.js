@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getPolicies } from '../actions';
+import T from '../../config/translate';
+
 
 export class PolicyList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillMount() {
         this.props.getPolicies();
@@ -15,7 +14,7 @@ export class PolicyList extends React.Component {
     render() {
         return (
             <div className="m-t-3">
-                <h4>Policies {this.props.isFetching && <img src="ajax-loader.gif" />}</h4>
+                <h4><T path="policy.policies" /> {this.props.isFetching && <img src="ajax-loader.gif" />}</h4>
                 <table className="table">
                     <tbody>
                         {this.props.policies.map(policy => {
@@ -38,17 +37,17 @@ PolicyList.propTypes = {
     getPolicies: React.PropTypes.func.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return {
         getPolicies: () => {dispatch(getPolicies())}
     }
-}
+};
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
     return {
         isFetching: state.policies.isFetching,
         policies: state.policies.items
     };
-}
+};
 
 PolicyList = connect(mapStateToProps, mapDispatchToProps)(PolicyList);

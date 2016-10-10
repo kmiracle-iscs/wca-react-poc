@@ -6,10 +6,8 @@ import AccountConfigurable from '../../account/account-configurable';
 import { Timeline } from '../../timeline/body';
 import styles from '../../index.css';
 
+
 export class Dashboard extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

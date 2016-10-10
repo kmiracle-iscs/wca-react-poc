@@ -1,61 +1,51 @@
-import { App } from './app'
-import { Login} from './auth/login'
-import { Dashboard } from './app/components/dashboard-component'
+import { App } from './app';
+import { Login} from './auth/login';
+import { MainLayout } from './app/components/main-layout';
+import { Dashboard } from './app/components/dashboard-component';
 import { AccountItem } from './account/account-item';
-import { loggedIn, logout, hasSavedSession } from './auth/auth-service';
 import { store } from './app';
-import { initFromLocalStorage } from './actions';
+import { getConfig } from './config/actions';
+import { hasConfig } from './config/config-service';
+import { logout } from './auth/auth-service';
+import requireAuth from './auth/authenticated-component';
 
 
-function requireAuth(nextState, replace) {
-    if (!loggedIn()) {
-        if (hasSavedSession()) {
-            store.dispatch(initFromLocalStorage());
-        } else {
-            replace({
-                pathname: '/login',
-                state: { nextPathname: nextState.location.pathname }
-            });
-        }
-    }
-}
 
 export const routes = {
     path: '/',
     component: App,
     indexRoute: {
-        component: Dashboard,
-        onEnter: requireAuth
+        component: requireAuth(Dashboard)
     },
     childRoutes: [
         {
-            path: 'dashboard',
-            component: Dashboard,
-            onEnter: requireAuth
+            component: requireAuth(MainLayout),
+            childRoutes: [
+                {
+                    path: '/dashboard',
+                    component: requireAuth(Dashboard)
+                },
+                {
+                    path: '/account/:id',
+                    component: requireAuth(AccountItem)
+                }
+            ]
         },
         {
-            path: 'account/:id',
-            component: AccountItem,
-            onEnter: requireAuth
-        },
-        {
-            path: 'policy/:policyId',
-            onEnter: requireAuth
-        },
-        {
-            path: 'login',
+            path: '/login',
             component: Login,
-            onEnter: (nextState, replace) => {
-                // go to dashboard if we're already logged in
-                if (loggedIn()) {
-                    replace({
-                        pathname: '/dashboard'
-                    });
+            onEnter: (nextState, replace, callback) => {
+                if (!hasConfig()) {
+                    store.dispatch(getConfig()).then(() => {
+                        callback();
+                    })
+                } else {
+                    callback();
                 }
             }
         },
         {
-            path: 'logout',
+            path: '/logout',
             onEnter: (nextState, replace) => {
                 logout();
 
@@ -64,5 +54,6 @@ export const routes = {
                 });
             }
         }
+
     ]
 };

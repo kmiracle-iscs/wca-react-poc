@@ -1,6 +1,6 @@
 import { POLICIES_REQUEST, POLICIES_RESPONSE, POLICIES_FAILURE } from '../constants';
 
-export default function reducePolicies(state = {}, action) {
+const reducePolicies = (state = {}, action) => {
     switch (action.type) {
         case POLICIES_REQUEST:
             return Object.assign({}, state, {
@@ -16,4 +16,6 @@ export default function reducePolicies(state = {}, action) {
         default:
             return state
     }
-}
+};
+
+export default reducePolicies;

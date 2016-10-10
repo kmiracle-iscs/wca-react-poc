@@ -2,37 +2,35 @@ import 'babel-polyfill';
 import { POLICIES_REQUEST, POLICIES_RESPONSE, POLICIES_FAILURE } from '../constants';
 import PolicyService from './policy-service';
 
-export function policiesRequest() {
+export const policiesRequest = () => {
     return {
         type: POLICIES_REQUEST
     }
-}
+};
 
-export function policiesResponse(policies) {
+export const policiesResponse = (policies) => {
     return {
         type: POLICIES_RESPONSE,
         policies
     }
-}
+};
 
-export function policiesFailure() {
+export const policiesFailure = () => {
     return {
         type: POLICIES_FAILURE
     }
-}
+};
 
-export function getPolicies() {
-    return function (dispatch) {
-        dispatch(policiesRequest());
+export const getPolicies = () => dispatch => {
+    dispatch(policiesRequest());
 
-        const policyService = new PolicyService();
+    const policyService = new PolicyService();
 
-        return policyService.getPolicies()
-            .then(json => {
-                dispatch(policiesResponse(json));
-            })
-            .catch(error => {
-                dispatch(policiesFailure())
-            });
-    }
-}
+    return policyService.getPolicies()
+        .then(json => {
+            dispatch(policiesResponse(json));
+        })
+        .catch(error => {
+            dispatch(policiesFailure())
+        });
+};

@@ -6,10 +6,8 @@ import FaPhone from 'react-icons/lib/fa/phone';
 import { getAgent } from '../actions';
 import styles from '../../index.css';
 
+
 export class AgentCard extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillMount() {
         this.props.getAgent();
@@ -30,8 +28,8 @@ export class AgentCard extends React.Component {
                             <div key={index} className={contact.type}>
                                 <div className={styles['contact-type']}>
                                     {(
-                                        contact.label == "Email" 
-                                            ? <FaEnvelope/> 
+                                        contact.label == "Email"
+                                            ? <FaEnvelope/>
                                             : <FaPhone/>
                                     )}
                                 </div>
@@ -51,17 +49,17 @@ AgentCard.propTypes = {
     getAgent: React.PropTypes.func.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return {
         getAgent: () => {dispatch(getAgent())}
     };
-}
+};
 
-function mapStateToProps(state) {
-    return { 
+const mapStateToProps = (state) => {
+    return {
         isFetching: state.agent.isFetching,
         agent: state.agent
     };
-}
+};
 
 AgentCard = connect(mapStateToProps, mapDispatchToProps)(AgentCard);

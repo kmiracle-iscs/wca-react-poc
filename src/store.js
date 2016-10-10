@@ -1,6 +1,7 @@
 import thunkMiddleware from 'redux-thunk'
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import identity from 'lodash/identity';
+import { routerReducer } from 'react-router-redux'
 
 
 import accounts from './account/reducers';
@@ -10,10 +11,12 @@ import config from './config/reducers';
 import events from './timeline/reducers';
 import agent from './agent/reducers';
 import { LOGOUT_REQUEST, INIT_FROM_LOCAL_STORAGE } from './constants';
+import { recordingMiddleware as bugReporterMiddleware } from './bug-reporter/history';
+
 
 const initialState = {
     auth: {
-        isLoggedIn: false,
+        isAuthenticated: false,
         bearerToken: null,
         activeCustomerId: null
     },
@@ -49,20 +52,22 @@ const reducer = combineReducers({
     policies,
     auth,
     events,
-    agent
+    agent,
+    routing: routerReducer
 });
-
 
 // Root reducer that can affect all state at once. Useful for logout to clear all state.
 const rootReducer = (state, action) => {
     switch (action.type) {
         case LOGOUT_REQUEST:
-            return Object.assign({}, state, initialState); // Return the initial state
+            const initialStateWithConfig = initialState;
+            initialStateWithConfig.config = state.config;
+            return Object.assign({}, state, initialStateWithConfig); // Return the initial state
 
         case INIT_FROM_LOCAL_STORAGE:
             return Object.assign({}, state, {
                 auth: {
-                    isLoggedIn: true,
+                    isAuthenticated: true,
                     bearerToken: action.bearerToken,
                     activeCustomerId: action.activeCustomerId
                 }
@@ -85,14 +90,16 @@ const getDevToolsExtension = () => {
 };
 
 
-export default function configureStore(preloadedState = initialState) {
+const configureStore = (preloadedState = initialState) => {
     return createStore(
         rootReducer,
         preloadedState,
         compose(
-            applyMiddleware(thunkMiddleware),
+            applyMiddleware(thunkMiddleware, bugReporterMiddleware),
             getDevToolsExtension()
         )
     )
-}
+};
+
+export default configureStore;
 
