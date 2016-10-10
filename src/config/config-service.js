@@ -24,6 +24,9 @@ const mockData = {
             policy: {
               policies: "Policies"
             },
+            claim: {
+                claims: "Claims"
+            },
             nav: {
                 home: "Home",
                 support: "Support",
@@ -62,6 +65,9 @@ const mockData = {
             },
             policy: {
                 policies: "Políticas"
+            },
+            claim: {
+                claims: "Reclamaciones"
             },
             nav: {
                 home: "Case",
