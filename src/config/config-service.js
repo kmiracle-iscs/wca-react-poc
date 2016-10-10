@@ -6,7 +6,8 @@ import { store } from '../app';
 const mockData = {
     features: {
         AccountList: true,
-        AgentCard: true
+        AgentCard: true,
+        CreateJiraIssues: false,
     },
     language: "english",
     translations: {
