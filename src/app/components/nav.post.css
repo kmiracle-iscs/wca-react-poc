@@ -3,7 +3,7 @@
 .main-nav {
 
   &.bootstrap-override {
-    background-color: #2658a5;
+    background-color: var(--u-error--color);
   }
 
   &__container {
