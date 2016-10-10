@@ -9,6 +9,9 @@ const getConfig = function (isProd) {
     return {
         parser: require('postcss-comment'),
         plugins: _.compact([
+            // inline @imports (for custom-properties, only inlines the ones actually used)
+            require("postcss-import"),
+
             require('postcss-mixins'),
 
             // nested selectors: `.parent-class { .child-class-1 { ... }, child-class-2 { ... }}`
