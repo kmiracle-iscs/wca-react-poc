@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import moment from 'moment';
+import _ from 'lodash';
 
 import { getTimelineEvents } from '../actions';
 import TimelineHeader from '../header';
@@ -12,7 +12,9 @@ export class Timeline extends React.Component {
 
     componentWillMount() {
         this.props.getTimelineEvents();
-        this.props.getUser();
+        if (_.isEmpty(this.props.user)) {
+            this.props.getUser();
+        }
     }
 
     render() {
