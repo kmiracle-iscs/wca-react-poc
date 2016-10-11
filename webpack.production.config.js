@@ -51,7 +51,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: './src/template.html',
-            title: 'Webpack App'
+            title: 'WCA React POC'
         })
     ]
 };
