@@ -42,11 +42,23 @@ export default class ApiService {
 
     get(resource) {
         return axios.get(this._createUrl(resource), this.config)
-            .then(response => response.data)
+            .then(response => response.data);
     }
 
     post(resource, body) {
         return axios.post(this._createUrl(resource), body, this.config)
-            .then(response => response.data)
+            .then(response => response.data);
+    }
+
+    tunnel(method, params, customerId) {
+        const payload = {
+            method,
+            params: [params],
+            id: '1',
+            jsonrpc: '2.0'
+        };
+
+        return axios.post(this._createUrl(`customers/${customerId}/tunnel`), payload, this.config)
+            .then(response => response.data);
     }
 }
