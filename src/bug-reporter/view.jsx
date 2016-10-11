@@ -42,10 +42,10 @@ class Question extends Component {
 
         return (
             <div className="bug-reporter-question row">
-                <label className="bug-reporter-question__label col-sm-3">
+                <label className="bug-reporter-question__label">
                     { p.label }
                 </label>
-                <div className="col-sm-9">
+                <div>
                     { React.createElement(p.type || 'input', {
                         className: 'bug-reporter-question__input',
                         value,

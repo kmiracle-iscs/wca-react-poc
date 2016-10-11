@@ -7,10 +7,16 @@
   &__wrapper {
     text-align: center;
     padding: 25px;
+
+    & > div > button {
+      margin-top: 25px; // this is bad, but okay to use for the demo
+    }
   }
 
   &__questions-wrapper {
     padding: 25px;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   &__submit-button {
@@ -22,7 +28,6 @@
 
 .bug-reporter-question {
 
-  max-width: 600px;
   margin: 10px;
 
   &__error {
@@ -37,10 +42,13 @@
 
   &__label {
     text-align: right;
+    width: 250px;
+    float: left;
+    margin-right: 10px;
   }
 
   &__input {
-    width: 100%;
+    width: 450px;
   }
 
 }
