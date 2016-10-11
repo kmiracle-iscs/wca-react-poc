@@ -15,7 +15,7 @@ export default class TimelineHeader extends React.Component {
                 <div className={cssClasses}>
                     <span>
                         <strong>
-                            <T path="timeline.welcome"/>, {this.props.user.firstName} {this.props.user.lastName}
+                            <T path="timeline.welcome"/>, {this.props.isFetching && <img src="ajax-loader.gif" />} {this.props.user.firstName} {this.props.user.lastName}
                         </strong>
                     </span>
                     <p><T path="timeline.status"/>: <T path="timeline.active"/> | <T path="timeline.accounts"/>: Auto, Homeowners</p>
@@ -34,5 +34,6 @@ export default class TimelineHeader extends React.Component {
 }
 
 TimelineHeader.propTypes = {
-    user: React.PropTypes.object.isRequired
+    user: React.PropTypes.object.isRequired,
+    isFetching: React.PropTypes.bool.isRequired
 };

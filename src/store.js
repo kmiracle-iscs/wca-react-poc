@@ -10,6 +10,7 @@ import auth from './auth/reducers';
 import config from './config/reducers';
 import events from './timeline/reducers';
 import agent from './agent/reducers';
+import claims from './claim/reducers';
 import user from './user/reducers';
 import { LOGOUT_REQUEST, INIT_FROM_LOCAL_STORAGE } from './constants';
 import { recordingMiddleware as bugReporterMiddleware } from './bug-reporter/history';
@@ -44,6 +45,10 @@ const initialState = {
         contactAddress: {},
         contacts: []
     },
+    claims: {
+        isFetching: false,
+        items: []
+    },
     user: {
         isFetching: false,
         data: {}
@@ -58,6 +63,7 @@ const reducer = combineReducers({
     auth,
     events,
     agent,
+    claims,
     user,
     routing: routerReducer
 });

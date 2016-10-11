@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import moment from 'moment';
+import _ from 'lodash';
 
 import { getTimelineEvents } from '../actions';
 import TimelineHeader from '../header';
@@ -12,13 +12,15 @@ export class Timeline extends React.Component {
 
     componentWillMount() {
         this.props.getTimelineEvents();
-        this.props.getUser();
+        if (_.isEmpty(this.props.user)) {
+            this.props.getUser();
+        }
     }
 
     render() {
         return (
             <div>
-                <TimelineHeader user={this.props.user}/>
+                <TimelineHeader user={this.props.user} isFetching={this.props.isFetchingUser}/>
                 <h4><T path="timeline.recentActivity"/></h4>
                 <table className="table">
                     <tbody>
