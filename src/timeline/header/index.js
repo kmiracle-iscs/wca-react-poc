@@ -1,20 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import moment from 'moment';
 
 import styles from '../../index.css';
 import T from '../../config/translate';
 
 
-export class TimelineHeader extends React.Component {
-    
+export default class TimelineHeader extends React.Component {
+
     render() {
         const cssClasses = `col-md-5 ${styles.noPadding}`;
 
         return (
             <div className={`row m-b-3 ${styles.noMargin}`}>
                 <div className={cssClasses}>
-                    <span><strong><T path="timeline.welcome"/>, Doug Moore</strong></span>
+                    <span>
+                        <strong>
+                            <T path="timeline.welcome"/>, {this.props.isFetching && <img src="ajax-loader.gif" />} {this.props.user.firstName} {this.props.user.lastName}
+                        </strong>
+                    </span>
                     <p><T path="timeline.status"/>: <T path="timeline.active"/> | <T path="timeline.accounts"/>: Auto, Homeowners</p>
                 </div>
                 <div className="col-md-4">
@@ -29,3 +32,8 @@ export class TimelineHeader extends React.Component {
         )
     }
 }
+
+TimelineHeader.propTypes = {
+    user: React.PropTypes.object.isRequired,
+    isFetching: React.PropTypes.bool.isRequired
+};

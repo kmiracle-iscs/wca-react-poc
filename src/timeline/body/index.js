@@ -3,20 +3,22 @@ import { connect } from 'react-redux'
 import moment from 'moment';
 
 import { getTimelineEvents } from '../actions';
-import { TimelineHeader } from '../header';
+import TimelineHeader from '../header';
 import T from '../../config/translate';
+import { getUser } from '../../user/actions';
 
 
 export class Timeline extends React.Component {
 
     componentWillMount() {
         this.props.getTimelineEvents();
+        this.props.getUser();
     }
 
     render() {
         return (
             <div>
-                <TimelineHeader />
+                <TimelineHeader user={this.props.user} isFetching={this.props.isFetchingUser}/>
                 <h4><T path="timeline.recentActivity"/></h4>
                 <table className="table">
                     <tbody>
@@ -40,20 +42,24 @@ export class Timeline extends React.Component {
 
 Timeline.propTypes = {
     events: React.PropTypes.array.isRequired,
-    isFetching: React.PropTypes.bool.isRequired,
+    isFetchingEvents: React.PropTypes.bool.isRequired,
+    isFetchingUser: React.PropTypes.bool.isRequired,
     getTimelineEvents: React.PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getTimelineEvents: () => {dispatch(getTimelineEvents())}
+        getTimelineEvents: () => {dispatch(getTimelineEvents())},
+        getUser: () => {dispatch(getUser())}
     }
 };
 
 const mapStateToProps = (state) => {
     return {
-        isFetching: state.events.isFetching,
-        events: state.events.items
+        isFetchingEvents: state.events.isFetching,
+        isFetchingUser: state.user.isFetching,
+        events: state.events.items,
+        user: state.user.data
     };
 };
 
