@@ -3,16 +3,40 @@ import _ from 'lodash';
 
 
 import { baseUrl, apiKey } from './config/config-service';
-import { loggedIn, getBearerToken } from './auth/auth-service';
+import { loggedIn, logout, getBearerToken, getActiveCustomerId } from './auth/auth-service';
 
+
+let timeoutTimer = null;
 
 const isApiRequest = (config) => {
     return _.startsWith(config.url, baseUrl);
 };
 
+const refreshApiTimeout = (timer, timeoutInMinutes) => {
+    const timeoutInMilliseconds = (timeoutInMinutes * 60 * 1000) - 30000;
+
+    if (timer) {
+        clearTimeout(timer);
+    }
+    return setTimeout(() => {
+                apiTimeout();
+            }, timeoutInMilliseconds);
+}
+
+const apiTimeout = () => {
+    const api = new ApiService();
+    // api.post(`customers/${getActiveCustomerId()}/users/pete3/logout`);
+    clearTimeout(timeoutTimer);
+
+    // TODO: add alert to notify of timeout
+    logout();
+}
+
+
 const interceptApiRequests = (config) => {
     if (loggedIn() && isApiRequest(config)) {
         config.headers.bearerToken = getBearerToken();
+        timeoutTimer = refreshApiTimeout(timeoutTimer, 1.2);
     }
     return config;
 };
